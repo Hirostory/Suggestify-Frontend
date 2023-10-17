@@ -36,7 +36,6 @@ function SignUp() {
         })
     }
 
-
   return (
     <div className="signup-container">
       <div className="signup-header">
