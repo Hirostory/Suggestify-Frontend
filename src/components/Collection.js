@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import CollectionIndex from "../pages/CollectionIndex";
+import UserIndex from "../pages/UserIndex";
 
 const URL = "http://localhost:3000/collection"
 
@@ -7,7 +9,7 @@ const Collection = (props, {userId}) => {
     const [collection, setCollection] = useState(null)
 
     const getCollection = async () => {
-        const response = await fetch(`${URL}?userId=${userId}`)
+        const response = await fetch(URL)
         const data = await response.json()
         setCollection(data)
         console.log(data)
@@ -52,6 +54,12 @@ const Collection = (props, {userId}) => {
     return (
         <div>
             <h1>COLLECTION</h1>
+            <Routes>
+                <Route path={`/collection`} 
+                element={< CollectionIndex collection={collection} createCollection={createCollection} />} 
+                
+                />
+            </Routes>
         </div>
     )
 }

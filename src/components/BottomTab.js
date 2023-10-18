@@ -25,6 +25,7 @@ const BottomTab = (props) => {
                 <div className={toggle === 1 ? "content active-content" : "content"}>
                     <div>
                         <User />
+                        <Collection />
                         <Recommendation />
                     </div>
                 </div>
