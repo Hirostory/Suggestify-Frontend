@@ -2,6 +2,7 @@ import { useState } from "react"
 import "../bottomtab.css"
 import Collection from "./Collection"
 import Recommendation from "./Recommendation"
+import User from "./User"
 
 const BottomTab = (props) => {
 
@@ -23,7 +24,7 @@ const BottomTab = (props) => {
             <div className="bottom-content-tabs">
                 <div className={toggle === 1 ? "content active-content" : "content"}>
                     <div>
-                        <Collection />
+                        <User />
                         <Recommendation />
                     </div>
                 </div>
