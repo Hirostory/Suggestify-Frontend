@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import './Login.css'
 
 function Login() {
-//  const [users, setUsers] = useState([])
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
@@ -25,13 +24,13 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:3000/user/login', { username, password })
       const token = response.data.token
+      const userId = response.data.userId
       alert('Login successful')
       setUsername('')
       setPassword('')
       fetchUsers()
-      navigate('account')
-      window.location.reload()
       localStorage.setItem('token', token)
+      navigate(`/login/${userId}`)
     } catch (error) {
       console.log('Login Error')
     }

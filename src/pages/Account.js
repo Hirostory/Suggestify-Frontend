@@ -1,6 +1,7 @@
 
 
-function Account() {
+function Account({ userId }) {
+  
   return (
     <div>
       <h2>Account</h2>
