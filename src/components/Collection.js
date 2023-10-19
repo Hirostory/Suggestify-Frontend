@@ -53,7 +53,6 @@ const Collection = (props, {userId}) => {
 
     return (
         <div>
-            <h1>COLLECTION</h1>
             <Routes>
                 <Route path={`/collection`} 
                 element={< CollectionIndex collection={collection} createCollection={createCollection} />} 

@@ -33,7 +33,6 @@ const User = (props) => {
 
     return (
         <div>
-            <h1>COLLECTION</h1>
             <Routes>
                 <Route path="/user" element={< UserIndex user={user} />} />
                 <Route path="/user/:id" 

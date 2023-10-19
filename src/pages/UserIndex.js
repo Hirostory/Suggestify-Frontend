@@ -30,7 +30,6 @@ const UserIndex = (props) => {
                         <h1>{user.username}</h1>
                     </Link>
                     <img src={user.profilePicture} alt={user.username} />
-                    
                 </div>
             )
         })
