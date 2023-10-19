@@ -9,7 +9,6 @@ function Login() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetchUsers()
   }, [])
 
   const fetchUsers = () => {
