@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import './Login.css'
 
 function Login() {
-//  const [users, setUsers] = useState([])
+  // const [users, setUsers] = useState([])
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetchUsers()
   }, [])
 
   const fetchUsers = () => {
