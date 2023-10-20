@@ -57,14 +57,22 @@ const UserBottomTab = (props) => {
     
           <div className="bottom-content-tabs">
             {user.collectionsName && user.collectionsName.map((collection, index) => (
-              <div
-                key={collection._id}
-                className={toggle === index + 1 ? "content active-content" : "content"}
-              >
-                <h2>Collection: {collection.name}</h2>
-                <img src={collection.image} alt={collection.name} />
-                <p>{collection.description}</p>
-              </div>
+              <>
+                <div
+                    key={collection._id}
+                    className={toggle === index + 1 ? "content active-content" : "content"}
+                >
+                    <h2>Collection: {collection.name}</h2>
+                    <img src={collection.image} alt={collection.name} />
+                    <p>{collection.description}</p>
+                </div>
+                {collection.recommendation && collection.recommendation.map((recommendation) (
+                    <div key={recommendation._id}>
+                        <h1>{recommendation.title}</h1>
+                        <img src={recommendation.image} alt={recommendation.title} />
+                    </div>
+                ))}
+              </>
             ))}
                 <div className={toggle === "add" ? "content active-content" : "content"}>
                     <h2>add</h2>

@@ -54,10 +54,6 @@ const BottomTab = (props) => {
             <div className="bottom-content-tabs">
                 <div className={toggle === 1 ? "content active-content" : "content"}>
                     <div>
-                    <h1>{user.username}</h1>
-                        <Routes>
-                            {isUserSignedIn && <Route path='/user/:userId' element={<UserShow /> }/> }
-                        </Routes>
                         <User />
                         <Collection />
                         <Recommendation />

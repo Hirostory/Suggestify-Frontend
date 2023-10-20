@@ -30,7 +30,7 @@ const TopTab = (props) => {
                     <Login />
                 </div>
                 <div className={toggle === 3 ? "content active-content" : "content"}>
-                    <User />
+                
                 </div>
             </div>
         </div>
