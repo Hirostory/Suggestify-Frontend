@@ -4,9 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 const URL = `http://localhost:3000/user`
 
 const UserShow = (props) => {
-    // const params = useParams()
     const { userId } = useParams()
-    const navigate = useNavigate()
     const [user, setUser] = useState(null)
     
     useEffect(() => {
@@ -15,7 +13,7 @@ const UserShow = (props) => {
                 const response = await fetch(`${URL}/${userId}`);
                 const data = await response.json();
                 setUser(data);
-                console.log(data)
+                console.log("USERSHOW DATA: ",data)
             } catch (error) {
                 console.error('Error fetching user:', error);
             }
@@ -30,8 +28,6 @@ const UserShow = (props) => {
 
     return (
         <div>
-            <h1>{user.username}</h1>
-            <img src={user.profilePicture} alt={user.username} />
 
             <div>
                 <h2>Collections:</h2>

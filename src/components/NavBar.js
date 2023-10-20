@@ -8,6 +8,7 @@ function NavBar() {
   const handleSignOut = () => {
     localStorage.removeItem('token')
     navigate('/user')
+    window.location.reload()
   }
 
   return (
@@ -27,7 +28,7 @@ function NavBar() {
           </>
         ) : (
           <>
-            <Link to='user/login'>
+            <Link to='user'>
               <li>Login</li>
             </Link>
             <Link to='user/signup'>

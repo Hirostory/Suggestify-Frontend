@@ -36,7 +36,7 @@ function Login() {
       localStorage.setItem('token', token)
       navigate(`/user/${userId}`)
 
-      window.location.reload();
+      window.location.reload()
     } catch (error) {
       console.log('Login Error')
     }

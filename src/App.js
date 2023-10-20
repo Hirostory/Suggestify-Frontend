@@ -9,6 +9,8 @@ import BottomTab from "./components/BottomTab";
 import TopTab from "./components/TopTab";
 import User from "./components/User";
 import UserShow from './pages/UserShow'
+import UserInfo from './pages/UserInfo'
+import UserBottomTab from './components/UserBottomTab'
 
 
 function App() {
@@ -25,9 +27,16 @@ function App() {
       </Routes>
 
       <TopTab />
-      
-      <BottomTab />
-
+      <Routes>
+            {isUserSignedIn && <Route path='/user/:userId' element={<UserInfo />}/> }
+      </Routes>
+      {isUserSignedIn ? (
+        <Routes>
+          <Route path='/user/:userId' element={<UserBottomTab />} />
+        </Routes>
+      ) : (
+        <BottomTab />
+      )}
     </div>
   )
 }
