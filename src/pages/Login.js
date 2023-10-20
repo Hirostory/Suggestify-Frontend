@@ -4,18 +4,21 @@ import { useNavigate } from 'react-router-dom'
 import './Login.css'
 
 function Login() {
+  const [user, setUser] = useState(null)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
-  useEffect(() => {
-  }, [])
-
-  const fetchUsers = () => {
-    axios.get('http://localhost:3000/user/register')
-      .then((res) => {
-        console.log(res.data)
-      })
+  
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/user/register`);
+      const data = await response.json();
+      setUser(data);
+      console.log("this from the fetchusers ", data)
+  } catch (error) {
+      console.error('Error fetching user:', error);
+  }
   }
 
   const handleLogin = async (event) => {
@@ -24,16 +27,23 @@ function Login() {
       const response = await axios.post('http://localhost:3000/user/login', { username, password })
       const token = response.data.token
       const userId = response.data.userId
+      console.log("response data: ", response.data)
+      console.log("this is where we getting", userId)
       alert('Login successful')
       setUsername('')
       setPassword('')
       fetchUsers()
       localStorage.setItem('token', token)
-      navigate(`/login/${userId}`)
+      navigate(`/user/${userId}`)
+
+      window.location.reload();
     } catch (error) {
       console.log('Login Error')
     }
   }
+    useEffect(() => {
+      fetchUsers()
+      }, [])
 
   return (
     <div className="login-container">

@@ -37,10 +37,13 @@ const User = (props) => {
                 <Route path="/user" element={< UserIndex user={user} />} />
                 <Route path="/user/:id" 
                 element={
-                    < UserShow 
-                        user={user}
-                        collection={collection}
-                    />
+                    <>
+                        < UserShow 
+                            user={user}
+                            collection={collection}
+                        />
+                        
+                   </> 
                 }
                 />
             </Routes>

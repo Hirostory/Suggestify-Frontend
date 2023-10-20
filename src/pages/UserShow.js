@@ -4,14 +4,15 @@ import { useNavigate, useParams } from "react-router-dom"
 const URL = `http://localhost:3000/user`
 
 const UserShow = (props) => {
-    const params = useParams()
+    // const params = useParams()
+    const { userId } = useParams()
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
-
+    
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`${URL}/${params.id}`);
+                const response = await fetch(`${URL}/${userId}`);
                 const data = await response.json();
                 setUser(data);
                 console.log(data)
@@ -21,7 +22,7 @@ const UserShow = (props) => {
         };
 
         fetchUser();
-    }, [params.id]);
+    }, [userId]);
 
     if (!user) {
         return <div>Loading...</div>;
@@ -35,7 +36,7 @@ const UserShow = (props) => {
             <div>
                 <h2>Collections:</h2>
                 <ul>
-                    {user.collectionsName.map((collection) => (
+                {user.collectionsName && user.collectionsName.map((collection) => (
                         <li key={collection._id}>
                             <h2>{collection.name}</h2>
                             <img src={collection.image}/>
