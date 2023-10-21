@@ -7,7 +7,7 @@ const CollectionIndex = (props) => {
         name: "",
         description: "",
         image: "",
-        enum: ["Tv Show", "Movie", "Book", "Profuct", "Restaurant"]
+        enum: ["Tv Show", "Movie", "Book", "Product", "Restaurant"]
     })
 
     const handleChange = (event) => {
@@ -16,11 +16,6 @@ const CollectionIndex = (props) => {
             [event.target.name]: event.target.value 
         })) 
     }
-
-    const handleSubmit = (e) => {
-            e.preventDefault()
-            props.createCollection(newCollection)
-        }
 
 
     const loaded = () => {
@@ -43,9 +38,9 @@ const CollectionIndex = (props) => {
     }
    
     return (
-        <di>
+        <div>
         { props.collection ? loaded() : loading()}
-        </di>   
+        </div>   
     )
 }
 

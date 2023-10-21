@@ -19,6 +19,7 @@ const UserBottomTab = (props) => {
     const [selectedCollection, setSelectedCollection] = useState(null)
 
     useEffect(() => {
+        console.log("Neha is here ",props)
         const fetchUser = async () => {
             try {
                 const response = await fetch(`${URL}/${userId}`);
@@ -86,7 +87,9 @@ const UserBottomTab = (props) => {
             ))}
             
                 <div className={toggle === "add" ? "content active-content" : "content"}>
-                    <CollectionCreation />
+                    <CollectionCreation 
+                        createCollection={props.createCollection}
+                    />
                 </div>
                 <div className={toggle === "update" ? "content active-content" : "content"}>
                     <h2>update</h2>

@@ -17,8 +17,8 @@ const Collection = (props) => {
         console.log(data)
     }
 
-    const createCollection = async (collection) => {
-        const response = await fetch(URL, {
+    const createCollection = async (collection, id) => {
+        const response = await fetch(`${URL}/${id}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -57,18 +57,10 @@ const Collection = (props) => {
                 <Route path={`/collection`} 
                 element=
                 {
-                <>
                 < CollectionIndex 
                     collection={collection} 
                     createCollection={createCollection} 
-                />
-                < CollectionCreation 
-                    collection={collection} 
-                    createCollection={createCollection}
-                />
-                </>
-                } 
-                 />
+                /> }  />
             </Routes>
             
         </div>

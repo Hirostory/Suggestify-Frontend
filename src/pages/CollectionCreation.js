@@ -16,9 +16,10 @@ const CollectionCreation = (props) => {
             [event.target.name]: event.target.value
         }))
     }
-
+        
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log("Form Submitted: ", newForm)
         props.createCollection(newForm)
     }
 
@@ -47,7 +48,7 @@ const CollectionCreation = (props) => {
                 placeholder="Image URL"
                 onChange={handleChange} 
                 />
-                <select
+                {/* <select
                     name="enum"
                     value={newForm.enum}
                     onChange={handleChange} 
@@ -57,7 +58,7 @@ const CollectionCreation = (props) => {
                             {item}
                         </option>
                     ))}
-                </select>
+                </select> */}
                     <input type="Submit" value="Create Collection" />
             </form>
         </section>
