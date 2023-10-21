@@ -9,7 +9,7 @@ import UserShow from "../pages/UserShow"
 import UserInfo from "../pages/UserInfo"
 import RecommendationIndex from "../pages/RecommendationIndex"
 
-const URL = `http://localhost:3000/user`
+const URL = `http://localhost:4000/user`
 
 const BottomTab = (props) => {
     const isUserSignedIn = !!localStorage.getItem('token')

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import RecommendationIndex from "../pages/RecommendationIndex";
 
-const URL = "http://localhost:3000/recommendation"
+const URL = "http://localhost:4000/recommendation"
 
 const Recommendation = (props) => {
     const [recommendation, setRecommendation] = useState(null)

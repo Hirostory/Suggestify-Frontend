@@ -9,8 +9,8 @@ import BottomTab from "./BottomTab";
 import UserBottomTab from "./UserBottomTab";
 
 
-const URL = "http://localhost:3000/user"
-const collectionURL = "http://localhost:3000/collection"
+const URL = "http://localhost:4000/user"
+const collectionURL = "http://localhost:4000/collection"
 
 const User = (props) => {
     const [user, setUser] = useState(null)
