@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import { useNavigate, useParams } from "react-router-dom"
 
-const URL = `http://localhost:3000/user`
+const URL = `http://localhost:4000/user`
 
 const UserInfo = (props) => {
     const { userId } = useParams()

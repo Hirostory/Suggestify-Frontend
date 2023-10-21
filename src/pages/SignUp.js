@@ -13,7 +13,7 @@ function SignUp() {
 
     const fetchUsers = () => {
         axios
-        .get('http://localhost:3000/user/register') // URL for backend
+        .get('http://localhost:4000/user/register') // URL for backend
         .then((res) => {
             // console.log(res.data)
         })
@@ -22,7 +22,7 @@ function SignUp() {
     const handleRegister = (event) => {
         event.preventDefault()
         axios
-        .post('http://localhost:3000/user/register', { username, password })
+        .post('http://localhost:4000/user/register', { username, password })
         .then(() => {
             alert('Registration Successful')
             setUsername('')

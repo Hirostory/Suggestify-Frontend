@@ -4,7 +4,7 @@ import CollectionIndex from "../pages/CollectionIndex";
 import UserIndex from "../pages/UserIndex";
 import CollectionCreation from "../pages/CollectionCreation";
 
-const URL = "http://localhost:3000/collection"
+const URL = "http://localhost:4000/collection"
 
 const Collection = (props) => {
     const {userId} = props
