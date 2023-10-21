@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import UserIndex from "../pages/UserIndex";
 import UserShow from "../pages/UserShow";
 import Collection from "./Collection";
+import UserInfo from "../pages/UserInfo";
+import BottomTab from "./BottomTab";
+import UserBottomTab from "./UserBottomTab";
+
 
 const URL = "http://localhost:3000/user"
 const collectionURL = "http://localhost:3000/collection"
@@ -37,13 +41,24 @@ const User = (props) => {
                 <Route path="/user" element={< UserIndex user={user} />} />
                 <Route path="/user/:id" 
                 element={
-                    < UserShow 
-                        user={user}
-                        collection={collection}
-                    />
+                    <>
+                        < UserShow 
+                            user={user}
+                            collection={collection}
+                        />
+                        <UserInfo
+                            user={user}
+                            collection={collection} 
+                        />
+                        < UserBottomTab
+                            user={user}
+                            collection={collection} 
+                        />
+                   </> 
                 }
                 />
             </Routes>
+
         </div>
     )
 }

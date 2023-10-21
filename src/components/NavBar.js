@@ -7,18 +7,19 @@ function NavBar() {
 
   const handleSignOut = () => {
     localStorage.removeItem('token')
-    navigate('/login')
+    navigate('/user')
+    window.location.reload()
   }
 
   return (
     <nav>
-      <Link to='/'>
+      <Link to='/user'>
         <h1>Suggestify</h1>
       </Link>
       <ul>
         {isUserSignedIn ? (
           <>
-            <Link to='/account'>
+            <Link to='user/account'>
               <li>Account</li>
             </Link>
             <li>
@@ -27,10 +28,10 @@ function NavBar() {
           </>
         ) : (
           <>
-            <Link to='/login'>
+            <Link to='user'>
               <li>Login</li>
             </Link>
-            <Link to='/signup'>
+            <Link to='user/signup'>
               <li>Sign Up</li>
             </Link>
           </>

@@ -1,6 +1,8 @@
 import { useState } from "react"
 import "../toptab.css"
 import User from "./User"
+import Login from "../pages/Login"
+import NavBar from "./NavBar"
 
 const TopTab = (props) => {
 
@@ -24,10 +26,11 @@ const TopTab = (props) => {
                     <h2>SUGGESTIFY</h2>
                 </div>
                 <div className={toggle === 2 ? "content active-content" : "content"}>
-                    <h2>REGISTER/LOGIN</h2>
+                    <NavBar />
+                    <Login />
                 </div>
                 <div className={toggle === 3 ? "content active-content" : "content"}>
-                    <User />
+                
                 </div>
             </div>
         </div>
