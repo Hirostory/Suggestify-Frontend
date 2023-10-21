@@ -15,6 +15,7 @@ const UserBottomTab = (props) => {
     const [ toggle, setToggle ] = useState(1)
     const { userId } = useParams()
     const [user, setUser] = useState(null)
+    const [recommendation, setRecommendation] = useState(null)
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -22,7 +23,7 @@ const UserBottomTab = (props) => {
                 const response = await fetch(`${URL}/${userId}`);
                 const data = await response.json();
                 setUser(data);
-                console.log(data)
+                console.log("this is userbottomtab: ",data)
             } catch (error) {
                 console.error('Error fetching user:', error);
             }
@@ -65,21 +66,34 @@ const UserBottomTab = (props) => {
                     <h2>Collection: {collection.name}</h2>
                     <img src={collection.image} alt={collection.name} />
                     <p>{collection.description}</p>
-                </div>
-                {collection.recommendation && collection.recommendation.map((recommendation) (
-                    <div key={recommendation._id}>
-                        <h1>{recommendation.title}</h1>
-                        <img src={recommendation.image} alt={recommendation.title} />
-                    </div>
-                ))}
+            {user.recommendation && user.recommendation.map((recommendation) => {
+                    console.log("this is collection's reccomendation id", collection.recommendation)
+                    console.log("this is recommendation id", recommendation._id)
+                    return (
+                        <div key={recommendation._id}>
+                          <h3>{recommendation.title}</h3>
+                          <img src={recommendation.image} alt={recommendation.title} />
+                        </div>
+                    )               
+            })}
+                    
+                </div> 
               </>
             ))}
+            
                 <div className={toggle === "add" ? "content active-content" : "content"}>
                     <h2>add</h2>
                 </div>
                 <div className={toggle === "update" ? "content active-content" : "content"}>
                     <h2>update</h2>
                 </div>
+
+                {/* {user.recommendation && user.recommendation.map((recommendation) => (
+                    <div key={recommendation._id}>
+                        <h3>{recommendation.title}</h3>
+                        <img src={recommendation.image} alt={recommendation.title} />
+                    </div> 
+                ))} */}
           </div>
         </div>
       )

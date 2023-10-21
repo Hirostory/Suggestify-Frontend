@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import RecommendationIndex from "../pages/RecommendationIndex";
 
 const URL = "http://localhost:3000/recommendation"
 
@@ -19,7 +20,14 @@ const Recommendation = (props) => {
 
     return (
         <div>
-            <h1>Recommendation</h1>
+            <div>
+            <Routes>
+                <Route path={`/recommendation`} 
+                element={< RecommendationIndex recommendation={recommendation} />} 
+                
+                />
+            </Routes>
+        </div>
         </div>
     )
 }

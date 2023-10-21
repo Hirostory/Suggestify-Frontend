@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import UserShow from "../pages/UserShow"
 import UserInfo from "../pages/UserInfo"
+import RecommendationIndex from "../pages/RecommendationIndex"
 
 const URL = `http://localhost:3000/user`
 
@@ -46,7 +47,7 @@ const BottomTab = (props) => {
         <div className="container">
 
             <div className="bloc-tabs">
-                <div className={toggle === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)}>1</div>
+                <div className={toggle === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)}>tab 1</div>
                 <div className={toggle === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)}>Tab 2</div>
                 <div className={toggle === 3 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(3)}>Tab 3</div>
             </div>
@@ -60,7 +61,6 @@ const BottomTab = (props) => {
                     </div>
                 </div>
                 <div className={toggle === 2 ? "content active-content" : "content"}>
-                    <h2>CREATION</h2>
                     
                 </div>
                 <div className={toggle === 3 ? "content active-content" : "content"}>
