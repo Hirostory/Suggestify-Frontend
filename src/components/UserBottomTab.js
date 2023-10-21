@@ -15,7 +15,7 @@ const UserBottomTab = (props) => {
     const [ toggle, setToggle ] = useState(1)
     const { userId } = useParams()
     const [user, setUser] = useState(null)
-    const [recommendation, setRecommendation] = useState(null)
+    const [selectedCollection, setSelectedCollection] = useState(null)
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -67,14 +67,16 @@ const UserBottomTab = (props) => {
                     <img src={collection.image} alt={collection.name} />
                     <p>{collection.description}</p>
             {user.recommendation && user.recommendation.map((recommendation) => {
-                    console.log("this is collection's reccomendation id", collection.recommendation)
-                    console.log("this is recommendation id", recommendation._id)
+                if (collection._id === recommendation.collectionName) {
+                    // console.log("this is collection's reccomendation id", collection.recommendation)
+                    // console.log("this is recommendation id", recommendation._id)
                     return (
                         <div key={recommendation._id}>
                           <h3>{recommendation.title}</h3>
                           <img src={recommendation.image} alt={recommendation.title} />
                         </div>
-                    )               
+                    )  
+                    }            
             })}
                     
                 </div> 
@@ -88,12 +90,6 @@ const UserBottomTab = (props) => {
                     <h2>update</h2>
                 </div>
 
-                {/* {user.recommendation && user.recommendation.map((recommendation) => (
-                    <div key={recommendation._id}>
-                        <h3>{recommendation.title}</h3>
-                        <img src={recommendation.image} alt={recommendation.title} />
-                    </div> 
-                ))} */}
           </div>
         </div>
       )
