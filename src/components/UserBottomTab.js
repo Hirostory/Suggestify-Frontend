@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import UserShow from "../pages/UserShow"
 import UserInfo from "../pages/UserInfo"
+import CollectionCreation from "../pages/CollectionCreation"
 
 const URL = `http://localhost:3000/user`
 
@@ -74,6 +75,7 @@ const UserBottomTab = (props) => {
                         <div key={recommendation._id}>
                           <h3>{recommendation.title}</h3>
                           <img src={recommendation.image} alt={recommendation.title} />
+                          <p>{recommendation.reviewDescription}</p>
                         </div>
                     )  
                     }            
@@ -84,7 +86,7 @@ const UserBottomTab = (props) => {
             ))}
             
                 <div className={toggle === "add" ? "content active-content" : "content"}>
-                    <h2>add</h2>
+                    <CollectionCreation />
                 </div>
                 <div className={toggle === "update" ? "content active-content" : "content"}>
                     <h2>update</h2>

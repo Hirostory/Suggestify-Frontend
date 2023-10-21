@@ -11,6 +11,7 @@ import User from "./components/User";
 import UserShow from './pages/UserShow'
 import UserInfo from './pages/UserInfo'
 import UserBottomTab from './components/UserBottomTab'
+import CollectionCreation from './pages/CollectionCreation'
 
 
 function App() {

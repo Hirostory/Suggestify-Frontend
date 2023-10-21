@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import CollectionIndex from "../pages/CollectionIndex";
 import UserIndex from "../pages/UserIndex";
+import CollectionCreation from "../pages/CollectionCreation";
 
 const URL = "http://localhost:3000/collection"
 
-const Collection = (props, {userId}) => {
+const Collection = (props) => {
+    const {userId} = props
     const [collection, setCollection] = useState(null)
 
     const getCollection = async () => {
@@ -16,16 +18,14 @@ const Collection = (props, {userId}) => {
     }
 
     const createCollection = async (collection) => {
-        const collectionWithUserId = { ...collection, userId}
-        console.log("this is the collection with id" + collectionWithUserId)
         const response = await fetch(URL, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
             }, 
-            body: JSON.stringify(collectionWithUserId)
+            body: JSON.stringify(collection)
         })
-        console.log(collectionWithUserId)
+        console.log(collection)
         const createdCollection = await response.json()
         setCollection((prev) => [...prev, createdCollection]) 
     }
@@ -55,10 +55,22 @@ const Collection = (props, {userId}) => {
         <div>
             <Routes>
                 <Route path={`/collection`} 
-                element={< CollectionIndex collection={collection} createCollection={createCollection} />} 
-                
+                element=
+                {
+                <>
+                < CollectionIndex 
+                    collection={collection} 
+                    createCollection={createCollection} 
                 />
+                < CollectionCreation 
+                    collection={collection} 
+                    createCollection={createCollection}
+                />
+                </>
+                } 
+                 />
             </Routes>
+            
         </div>
     )
 }
