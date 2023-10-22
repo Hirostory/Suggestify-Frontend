@@ -5,9 +5,9 @@ import Recommendation from "./Recommendation"
 import User from "./User"
 import { Routes, Route } from "react-router-dom"
 import { useParams } from "react-router-dom"
-import UserShow from "../pages/UserShow"
-import UserInfo from "../pages/UserInfo"
-import RecommendationIndex from "../pages/RecommendationIndex"
+import UserShow from "../pages/User/UserShow"
+import UserInfo from "../pages/User/UserInfo"
+import RecommendationIndex from "../pages/Recommendation/RecommendationIndex"
 
 const URL = `http://localhost:4000/user`
 
@@ -20,20 +20,20 @@ const BottomTab = (props) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`${URL}/${userId}`);
-                const data = await response.json();
-                setUser(data);
+                const response = await fetch(`${URL}/${userId}`)
+                const data = await response.json()
+                setUser(data)
                 console.log(data)
             } catch (error) {
-                console.error('Error fetching user:', error);
+                console.error('Error fetching user:', error)
             }
-        };
+        }
 
-        fetchUser();
-    }, [userId]);
+        fetchUser()
+    }, [userId])
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>
     }
     
    

@@ -12,12 +12,12 @@ function Login() {
   
   const fetchUsers = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/user/register`);
-      const data = await response.json();
-      setUser(data);
+      const response = await fetch(`http://localhost:4000/user/register`)
+      const data = await response.json()
+      setUser(data)
       console.log("this from the fetchusers ", data)
   } catch (error) {
-      console.error('Error fetching user:', error);
+      console.error('Error fetching user:', error)
   }
   }
 

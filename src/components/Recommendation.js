@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import RecommendationIndex from "../pages/RecommendationIndex";
+import { useEffect, useState } from "react"
+import { Routes, Route } from "react-router-dom"
+import RecommendationIndex from "../pages/Recommendation/RecommendationIndex"
 
 const URL = "http://localhost:4000/recommendation"
 

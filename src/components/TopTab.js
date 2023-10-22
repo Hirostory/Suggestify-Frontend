@@ -1,7 +1,7 @@
 import { useState } from "react"
 import "../toptab.css"
 import User from "./User"
-import Login from "../pages/Login"
+import Login from "../pages/Login/Login"
 import NavBar from "./NavBar"
 
 const TopTab = (props) => {
@@ -16,9 +16,9 @@ const TopTab = (props) => {
         <div className="container">
 
             <div className="bloc-tabs">
-                <div className={toggle === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)}>Tab 1</div>
-                <div className={toggle === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)}>Tab 2</div>
-                <div className={toggle === 3 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(3)}>Tab 3</div>
+                <div className={toggle === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)}>Home</div>
+                <div className={toggle === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)}>Login</div>
+                <div className={toggle === 3 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(3)}>Register</div>
             </div>
 
             <div className="content-tabs">

@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import CollectionIndex from "../pages/CollectionIndex";
-import UserIndex from "../pages/UserIndex";
-import CollectionCreation from "../pages/CollectionCreation";
+import { useEffect, useState } from "react"
+import { Routes, Route } from "react-router-dom"
+import CollectionIndex from "../pages/Collection/CollectionIndex"
+import UserIndex from "../pages/User/UserIndex"
+import CollectionCreation from "../pages/Collection/CollectionCreation"
 
 const URL = "http://localhost:4000/collection"
 
@@ -11,7 +11,7 @@ const Collection = (props) => {
     const [collection, setCollection] = useState(null)
 
     const getCollection = async () => {
-        const response = await fetch(URL)
+        const response = await fetch(`${URL}?userId=${userId}`)
         const data = await response.json()
         setCollection(data)
         console.log(data)
@@ -31,7 +31,8 @@ const Collection = (props) => {
     }
 
     const updateCollection = async (collection, id) => {
-        await fetch(URL + id, {
+        await fetch(URL + '/' + id, {
+            method: "put",
             headers: {
                 "Content-Type": "application/json"
             },
