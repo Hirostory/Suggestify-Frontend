@@ -7,7 +7,7 @@ const CollectionCreation = (props) => {
         name: "",
         description: "",
         image: "",
-        enum: ["TV Show", "Movie", "Book", "Product", "Restaurant"]
+        enum: ["TV Show"]
     })
 
     const handleChange = (event) => {
@@ -20,7 +20,7 @@ const CollectionCreation = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("Form Submitted: ", newForm)
-        props.createCollection(newForm)
+        props.createCollection(newForm, props.userId)
     }
 
     return (
@@ -48,17 +48,18 @@ const CollectionCreation = (props) => {
                 placeholder="Image URL"
                 onChange={handleChange} 
                 />
-                {/* <select
+                <select
                     name="enum"
                     value={newForm.enum}
-                    onChange={handleChange} 
+                    onChange={handleChange}
                 >
-                    {newForm.enum.map((item) => (
-                        <option key={item} value={item}>
-                            {item}
-                        </option>
-                    ))}
-                </select> */}
+                    <option value="TV Show">TV Show</option>
+                    <option value="Movie">Movie</option>
+                    <option value="Book">Book</option>
+                    <option value="Product">Product</option>
+                    <option value="Restaurant">Restaurant</option>
+                    <option value="Playlist">Playist</option>
+                </select>
                     <input type="Submit" value="Create Collection" />
             </form>
         </section>

@@ -13,13 +13,13 @@ function NavBar() {
 
   return (
     <nav>
-      <Link to='/user'>
+      <Link to='/'>
         <h1>Suggestify</h1>
       </Link>
       <ul>
         {isUserSignedIn ? (
           <>
-            <Link to='user/account'>
+            <Link to='/account'>
               <li>Account</li>
             </Link>
             <li>
@@ -28,10 +28,10 @@ function NavBar() {
           </>
         ) : (
           <>
-            <Link to='user'>
+            <Link to='/login'>
               <li>Login</li>
             </Link>
-            <Link to='user/signup'>
+            <Link to='/signup'>
               <li>Sign Up</li>
             </Link>
           </>

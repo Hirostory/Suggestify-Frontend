@@ -89,10 +89,19 @@ const UserBottomTab = (props) => {
                 <div className={toggle === "add" ? "content active-content" : "content"}>
                     <CollectionCreation 
                         createCollection={props.createCollection}
+                        userId={userId}
                     />
                 </div>
                 <div className={toggle === "update" ? "content active-content" : "content"}>
-                    <h2>update</h2>
+                    <div>
+                        <h2>Update</h2>
+                        <div>
+                        {user.collectionsName && user.collectionsName.map((collection) => (
+                            <h4>{collection.name}</h4>
+                        ))}
+                        </div>
+                    </div>
+
                 </div>
 
           </div>
