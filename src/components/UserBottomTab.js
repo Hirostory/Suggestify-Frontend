@@ -85,11 +85,16 @@ const UserBottomTab = (props) => {
                           <h3>{recommendation.title}</h3>
                           <img src={recommendation.image} alt={recommendation.title} />
                           <p>{recommendation.reviewDescription}</p>
+                          <Link to={`/recommendation/update/${recommendation._id}`}>
+                          <button>Update Recommendation</button>
+                          </Link>
                         </div>
                     )  
                     }            
             })}
-                    
+                    <Link to={`/recommendation/${collection._id}`}>
+                    <button>Add Recommendation</button>
+                    </Link>
                 </div> 
               </>
             ))}

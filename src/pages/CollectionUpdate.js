@@ -73,7 +73,7 @@ const CollectionUpdate = (props) => {
                     <option value="Restaurant">Restaurant</option>
                     <option value="Playlist">Playist</option>
                 </select>
-                    <input type="Submit" value="Create Collection" />
+                    <input type="Submit" value="Update Collection" />
             </form>
         </section>
         </div>
