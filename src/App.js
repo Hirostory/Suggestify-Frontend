@@ -1,18 +1,14 @@
 import { Routes, Route, Navigate, Params, useParams } from 'react-router-dom'
 import './App.css'
 import { useState, useEffect } from 'react'
-import NavBar from './components/NavBar'
 import Home from './pages/Home'
-import Login from './pages/Login'
 import SignUp from './pages/SignUp'
-import Account from './pages/Account'
 import BottomTab from "./components/BottomTab";
 import TopTab from "./components/TopTab";
-import User from "./components/User";
-import UserShow from './pages/UserShow'
 import UserInfo from './pages/UserInfo'
 import UserBottomTab from './components/UserBottomTab'
-import CollectionCreation from './pages/CollectionCreation'
+import CollectionUpdate from './pages/CollectionUpdate'
+
 
 const URL = "http://localhost:4000/collection"
 
@@ -48,6 +44,24 @@ function App() {
         setCollection((prev) => [...prev, createdCollection]) 
     }
 
+    const updateCollection = async (collection, id) => {
+      await fetch(`${URL}/${id}`, {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(collection)
+      })
+      getCollection()
+    }
+
+    const deleteCollection = async (id) => {
+      await fetch(`${URL}/${id}`, {
+        method: "delete"
+      })
+      getCollection()
+    }
+
     useEffect(() => {
       getCollection()
     }, [])
@@ -68,8 +82,12 @@ function App() {
         <Routes>
           <Route path='/user/:userId' element={<UserBottomTab 
           createCollection={createCollection}
+          deleteCollection={deleteCollection}
           userId={userId}
-
+          />} />
+          <Route path='/collection/:id' element={<CollectionUpdate 
+          collection={collection}
+          updateCollection={updateCollection}
           />} />
         </Routes>
       ) : (

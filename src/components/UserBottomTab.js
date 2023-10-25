@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react"
 import "../bottomtab.css"
-import Collection from "./Collection"
-import Recommendation from "./Recommendation"
-import User from "./User"
 import { Routes, Route } from "react-router-dom"
-import { useParams } from "react-router-dom"
-import UserShow from "../pages/UserShow"
-import UserInfo from "../pages/UserInfo"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import CollectionCreation from "../pages/CollectionCreation"
 
 const URL = `http://localhost:4000/user`
@@ -14,8 +9,9 @@ const URL = `http://localhost:4000/user`
 const UserBottomTab = (props) => {
     const isUserSignedIn = !!localStorage.getItem('token')
     const [ toggle, setToggle ] = useState(1)
-    const { userId } = useParams()
+    const { userId, params } = useParams()
     const [user, setUser] = useState(null)
+    const navigate = useNavigate()
     const [selectedCollection, setSelectedCollection] = useState(null)
 
     useEffect(() => {
@@ -41,6 +37,12 @@ const UserBottomTab = (props) => {
    
     const toggleTab = (index) => {
         setToggle(index)
+    }
+
+    
+    const handleDelete = (collectionId) => {
+        props.deleteCollection(collectionId)
+        window.location.reload()
     }
     return (
         <div className="container">
@@ -68,6 +70,12 @@ const UserBottomTab = (props) => {
                     <h2>Collection: {collection.name}</h2>
                     <img src={collection.image} alt={collection.name} />
                     <p>{collection.description}</p>
+                    <div>
+                            <button onClick={() => handleDelete(collection._id)} id="delete">Delete Collection</button>
+                            <Link to={`/collection/${collection._id}`}>
+                            <button>Edit Collection</button>
+                            </Link>
+                    </div>
             {user.recommendation && user.recommendation.map((recommendation) => {
                 if (collection._id === recommendation.collectionName) {
                     // console.log("this is collection's reccomendation id", collection.recommendation)
@@ -97,8 +105,13 @@ const UserBottomTab = (props) => {
                         <h2>Update</h2>
                         <div>
                         {user.collectionsName && user.collectionsName.map((collection) => (
+                            <>
+                            <div>
                             <h4>{collection.name}</h4>
-                        ))}
+                            <button onClick={() => handleDelete(collection._id)} id="delete">Delete Collection</button>
+                            </div>
+                            </>
+                            ))}
                         </div>
                     </div>
 

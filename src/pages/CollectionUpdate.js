@@ -1,57 +1,69 @@
+import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const CollectionCreation = (props) => {
+const CollectionUpdate = (props) => {
+    const params = useParams()
+    const navigate = useNavigate()
 
-    const [newForm, setNewForm] = useState({
-        name: "",
-        description: "",
-        image: "",
-        enum: ["TV Show"]
+    const collection = props.collection.find((c) => {
+        return c._id === params.id
+    })
+
+    const [updateForm, setUpdateForm] = useState ({
+        name: collection.name,
+        description: collection.description,
+        image: collection.image,
+        enum: [collection.enum]
     })
 
     const handleChange = (event) => {
-        setNewForm(prev => ({
-            ...prev, 
+        setUpdateForm(prev => ({
+            ...prev,
             [event.target.name]: event.target.value
         }))
     }
-        
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("Form Submitted: ", newForm)
-        props.createCollection(newForm, props.userId)
-        window.location.reload()
+        props.updateCollection(updateForm, params.id)
+        navigate(`/user/${collection.user}`)
     }
 
     return (
-        <section>
+        <div>
+            <div>
+                <h1>Current Collection</h1>
+                <h1>{collection.name}</h1>
+                <img src={collection.image} alt={collection.name}/>
+            </div>
+            <section>
             <h2>Create Collection</h2>
             <form onSubmit={handleSubmit}>
                 <input
                 type="text"
-                value={newForm.name}
+                value={updateForm.name}
                 name="name"
                 placeholder="name"
                 onChange={handleChange} 
                 />
                 <input
                 type="text"
-                value={newForm.description}
+                value={updateForm.description}
                 name="description"
                 placeholder="description"
                 onChange={handleChange} 
                 />
                 <input
                 type="text"
-                value={newForm.image}
+                value={updateForm.image}
                 name="image"
                 placeholder="Image URL"
                 onChange={handleChange} 
                 />
                 <select
                     name="enum"
-                    value={newForm.enum}
+                    value={updateForm.enum}
                     onChange={handleChange}
                 >
                     <option value="TV Show">TV Show</option>
@@ -64,8 +76,8 @@ const CollectionCreation = (props) => {
                     <input type="Submit" value="Create Collection" />
             </form>
         </section>
-
+        </div>
     )
 }
 
-export default CollectionCreation
+export default CollectionUpdate
