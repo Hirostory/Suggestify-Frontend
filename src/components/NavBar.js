@@ -1,4 +1,3 @@
-
 import { Link, useNavigate } from 'react-router-dom'
 
 function NavBar() {
@@ -7,19 +6,16 @@ function NavBar() {
 
   const handleSignOut = () => {
     localStorage.removeItem('token')
-    navigate('/user')
+    navigate('/')
     window.location.reload()
   }
 
   return (
     <nav>
-      <Link to='/user'>
-        <h1>Suggestify</h1>
-      </Link>
       <ul>
         {isUserSignedIn ? (
           <>
-            <Link to='user/account'>
+            <Link to='/account'>
               <li>Account</li>
             </Link>
             <li>
@@ -28,10 +24,10 @@ function NavBar() {
           </>
         ) : (
           <>
-            <Link to='user'>
+            <Link to='/login'>
               <li>Login</li>
             </Link>
-            <Link to='user/signup'>
+            <Link to='/signup'>
               <li>Sign Up</li>
             </Link>
           </>

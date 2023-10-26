@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react"
 import "../bottomtab.css"
-import { Routes, Route } from "react-router-dom"
-import { useParams, Link } from "react-router-dom"
-import CollectionCreation from "../pages/CollectionCreation"
+import { useParams, useNavigate, Link } from "react-router-dom"
 
 const URL = `http://localhost:4000/user`
 
-const UserBottomTab = (props) => {
+const PublicBottomTab = (props) => {
     const [ toggle, setToggle ] = useState(1)
-    const { userId, params } = useParams()
+    const { userId } = useParams()
     const [user, setUser] = useState(null)
 
      const fetchUser = async () => {
@@ -16,23 +14,14 @@ const UserBottomTab = (props) => {
                 const response = await fetch(`${URL}/${userId}`);
                 const data = await response.json();
                 setUser(data);
-                console.log("this is userbottomtab: ",data)
+                console.log("this is PublicBottomTab: ",data)
             } catch (error) {
                 console.error('Error fetching user:', error);
             }
         };
 
-    
-    
-   
     const toggleTab = (index) => {
         setToggle(index)
-    }
-
-    
-    const handleDelete = (collectionId) => {
-        props.deleteCollection(collectionId)
-        window.location.reload()
     }
 
     useEffect(() => {
@@ -43,7 +32,12 @@ const UserBottomTab = (props) => {
         return <div>Loading...</div>;
     }
     return (
-        <div className="container">
+        <div>
+            <div>
+                <h1>{user.username}</h1>
+                <img src={user.profilePicture} alt={user.username} />
+            </div>
+            <div className="container">
           <div className="bloc-tabs">
             {user.collectionsName && user.collectionsName.map((collection, index) => (
               <div
@@ -54,7 +48,6 @@ const UserBottomTab = (props) => {
                 {collection.enum}
               </div>
             ))}
-            <div className={toggle === "add" ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab("add")}>add</div>
           </div>
     
           <div className="bottom-content-tabs">
@@ -68,10 +61,6 @@ const UserBottomTab = (props) => {
                     <img src={collection.image} alt={collection.name} />
                     <p>{collection.description}</p>
                     <div>
-                            <button onClick={() => handleDelete(collection._id)} id="delete">Delete Collection</button>
-                            <Link to={`/collection/${collection._id}`}>
-                            <button>Edit Collection</button>
-                            </Link>
                     </div>
             {user.recommendation && user.recommendation.map((recommendation) => {
                 if (collection._id === recommendation.collectionName) {
@@ -82,29 +71,20 @@ const UserBottomTab = (props) => {
                           <h3>{recommendation.title}</h3>
                           <img src={recommendation.image} alt={recommendation.title} />
                           <p>{recommendation.reviewDescription}</p>
-                          <Link to={`/recommendation/update/${recommendation._id}`}>
-                          <button>Update Recommendation</button>
-                          </Link>
                         </div>
                     )  
                     }            
             })}
-                    <Link to={`/recommendation/${collection._id}`}>
-                    <button>Add Recommendation</button>
-                    </Link>
                 </div> 
               </>
             ))}
             
-                <div className={toggle === "add" ? "content active-content" : "content"}>
-                    <CollectionCreation 
-                        createCollection={props.createCollection}
-                        userId={userId}
-                    />
-                </div>
           </div>
         </div>
+        </div>
+
+        
       )
 }
 
-export default UserBottomTab
+export default PublicBottomTab
