@@ -1,8 +1,8 @@
 import { useState } from "react"
 import "../toptab.css"
-import User from "./User"
 import Login from "../pages/Login"
 import NavBar from "./NavBar"
+import SignUp from "../pages/SignUp"
 
 const TopTab = (props) => {
 
@@ -28,6 +28,7 @@ const TopTab = (props) => {
                 <div className={toggle === 2 ? "content active-content" : "content"}>
                     <NavBar />
                     <Login />
+                    <SignUp />
                 </div>
                 <div className={toggle === 3 ? "content active-content" : "content"}>
                 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import Collection from "../components/Collection";
 
 const RecommendationCreation = (props) => {
     const params = useParams() 

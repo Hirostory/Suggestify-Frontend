@@ -1,4 +1,3 @@
-
 import { Link, useNavigate } from 'react-router-dom'
 
 function NavBar() {
@@ -7,15 +6,12 @@ function NavBar() {
 
   const handleSignOut = () => {
     localStorage.removeItem('token')
-    navigate('/user')
+    navigate('/')
     window.location.reload()
   }
 
   return (
     <nav>
-      <Link to='/'>
-        <h1>Suggestify</h1>
-      </Link>
       <ul>
         {isUserSignedIn ? (
           <>

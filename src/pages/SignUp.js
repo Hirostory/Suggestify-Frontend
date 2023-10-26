@@ -7,15 +7,16 @@ function SignUp() {
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
 
-    useEffect(() => {
-        fetchUsers()
-    }, [])
+   
 
     const fetchUsers = () => {
-        axios
+      axios
         .get('http://localhost:4000/user/register') // URL for backend
         .then((res) => {
-            // console.log(res.data)
+          // You can handle the response data here if needed
+        })
+        .catch((error) => {
+          console.error('Error fetching users:', error)
         })
     }
 
@@ -35,6 +36,9 @@ function SignUp() {
         })
     }
 
+    useEffect(() => {
+            fetchUsers()
+        }, [])
   return (
     <div className="signup-container">
       <div className="signup-header">

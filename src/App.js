@@ -1,14 +1,11 @@
 import { Routes, Route, Navigate, Params, useParams } from 'react-router-dom'
 import './App.css'
 import { useState, useEffect } from 'react'
-import Home from './pages/Home'
-import SignUp from './pages/SignUp'
 import BottomTab from "./components/BottomTab";
 import TopTab from "./components/TopTab";
 import UserInfo from './pages/UserInfo'
 import UserBottomTab from './components/UserBottomTab'
 import CollectionUpdate from './pages/CollectionUpdate'
-import Recommendation from './components/Recommendation'
 import RecommendationCreation from './pages/RecommendationCreation'
 import RecommendationUpdate from './pages/RecommendationUpdate'
 
@@ -115,10 +112,6 @@ function App() {
   return (
     <div className="App">
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="user/signup" element={<SignUp />} />
-      </Routes>
 
       <TopTab />
       <Routes>
