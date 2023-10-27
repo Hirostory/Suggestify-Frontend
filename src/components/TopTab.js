@@ -23,7 +23,10 @@ const TopTab = (props) => {
 
             <div className="content-tabs">
                 <div className={toggle === 1 ? "content active-content" : "content"}>
-                    <h2>SUGGESTIFY</h2>
+                    <div className="logo-conttainer">
+                    <img className="logo-text" src="https://see.fontimg.com/api/renderfont4/vmW67/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjRTA4RUQ2IiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/U1VHR0VTVElGWQ/super-boys.png" />
+                    <div className="logo-circle"></div>
+                    </div>
                 </div>
                 <div className={toggle === 2 ? "content active-content" : "content"}>
                     <NavBar />

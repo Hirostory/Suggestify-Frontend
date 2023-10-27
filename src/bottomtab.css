@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 10px;
-    background: #efefef;
+    background: #F2CBC2;
     font-family: 'Source Sans Pro', sans-serif;
     color: #333;
   }
@@ -21,7 +21,7 @@ body {
     box-shadow: 0 48px 80px -32px rgba(0,0,0,0.3);
 
     /* this is for thr font */
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
   }
 
@@ -95,11 +95,14 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    margin-top: 3rem;
 }
 
 .bottom-button-collection{
     position: absolute;
-    margin-bottom: 100px;
+    margin-bottom: 290px;
     margin-left: 850px;
 
     display: flex;
@@ -178,4 +181,29 @@ button {
     opacity: 1;
 }
 
+.add-rec {
+    background-color: #9e6999;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.collection-log {
+    font-size: 2rem;
+}
+
+.collection-name {
+    font-size: 3rem;
+    margin-top: 0rem;
+}
+
+.info-descript {
+    font-size: 1.5rem;
+    text-align: center;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
 

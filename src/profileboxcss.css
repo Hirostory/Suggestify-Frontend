@@ -1,0 +1,44 @@
+
+.profile-box {
+    height: 320px;
+    width: 700px;
+    background-color: #9e6999;
+    border-radius: 25px;
+    position: relative;
+    margin-left: 3rem;
+}
+
+.profile-picture {
+    height: 270px;
+    width: 300px;
+    object-fit: cover;
+    border: solid white 4px;
+    border-radius: 25px;
+    margin-right: 20rem;
+    margin-top: 1rem;
+
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.profile-name {
+    color: white;
+    font-size: 3rem;
+    margin-left: -17rem;
+    margin-top: 2rem;
+}
+
+.profile-name-loc-bio-social {
+    color: white;
+    font-size: 1rem;
+    margin-left: -17rem;
+}
+
+.p-s {
+    margin-top: 3rem;
+}
