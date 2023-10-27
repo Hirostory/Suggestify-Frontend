@@ -1,0 +1,31 @@
+
+.forum-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 700px;
+    margin: auto;
+    padding: 50px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.enum-scroll {
+    height: 50px;
+    width: 180px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    color: rgba(0, 0, 0, 0.555);
+}
+
+.edit-rec-forum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}

@@ -39,8 +39,8 @@ const RecommendationUpdate = (props) => {
     }
 
     return (
-        <div>
-            <div>
+        <div className="forum-container">
+            <div className="edit-rec-forum">
                 <h1>Current Recommendationn</h1>
                 <h1>{recommendation.name}</h1>
                 <img src={recommendation.image} alt={recommendation.name}/>

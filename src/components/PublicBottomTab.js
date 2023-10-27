@@ -33,10 +33,20 @@ const PublicBottomTab = (props) => {
     }
     return (
         <div>
-            <div>
-                <h1>{user.username}</h1>
-                <img src={user.profilePicture} alt={user.username} />
+            <div className='profile-box'>
+            <div className='profile-container'>
+                <img className='profile-picture' src={user.profilePicture} alt={user.username} />
+                <dic>
+                    <h1 className='profile-name'>{user.username}</h1>
+                    <div className='profile-name-loc-bio-social'>
+                        <h4>Name: Person </h4>
+                        <h4>Location Base: Location</h4>
+                        <h4>Quick About Me:</h4>
+                        <h4 className='p-s' >All social media logos</h4>
+                    </div>
+                </dic>
             </div>
+        </div>
             <div className="container">
           <div className="bloc-tabs">
             {user.collectionsName && user.collectionsName.map((collection, index) => (
@@ -45,7 +55,7 @@ const PublicBottomTab = (props) => {
                 className={toggle === index + 1 ? "tabs active-tabs" : "tabs"}
                 onClick={() => toggleTab(index + 1)}
               >
-                {collection.enum}
+                <h5 className="categoryname">{collection.enum}</h5>
               </div>
             ))}
           </div>
@@ -57,24 +67,33 @@ const PublicBottomTab = (props) => {
                     key={collection._id}
                     className={toggle === index + 1 ? "content active-content" : "content"}
                 >
-                    <h2>Collection: {collection.name}</h2>
-                    <img src={collection.image} alt={collection.name} />
-                    <p>{collection.description}</p>
-                    <div>
+                    <div className="container-collection-main">
+                    <div className="top-collection">
+                    <h1 className="collection-log">COLLECTION</h1>
+                    <h2 className="collection-name">{collection.name}</h2>
+                    {/* <img src={collection.image} alt={collection.name} /> */}
+                    <p className="info-descript">{collection.description}</p>
                     </div>
-            {user.recommendation && user.recommendation.map((recommendation) => {
-                if (collection._id === recommendation.collectionName) {
-                    // console.log("this is collection's reccomendation id", collection.recommendation)
-                    // console.log("this is recommendation id", recommendation._id)
-                    return (
-                        <div key={recommendation._id}>
-                          <h3>{recommendation.title}</h3>
-                          <img src={recommendation.image} alt={recommendation.title} />
-                          <p>{recommendation.reviewDescription}</p>
-                        </div>
-                    )  
-                    }            
-            })}
+                   </div>
+                   <div className="recommendation-box" >
+                {user.recommendation && user.recommendation.map((recommendation) => {
+                    if (collection._id === recommendation.collectionName) {
+                        // console.log("this is collection's reccomendation id", collection.recommendation)
+                        // console.log("this is recommendation id", recommendation._id)
+                        return (
+                            <div className="recommendation-conatiner" key={recommendation._id}>
+                                <img className="recom-image" src={recommendation.image} alt={recommendation.title} />
+                                <div className="recommendation-info">
+                                    <Link to={recommendation.link}>
+                                    <h3 className="image-text">{recommendation.title}</h3>
+                                    </Link>
+                                    <p className="image-text">{recommendation.reviewDescription}</p>
+                            </div>
+                            </div>
+                        )  
+                        }            
+                })}
+            </div>
                 </div> 
               </>
             ))}
