@@ -117,7 +117,6 @@ function App() {
       <Routes>
             <Route path='/user/:userId' element={<UserInfo />}/> 
       </Routes>
-       (
         <>
         <Routes>
           <Route path='/user/:userId' element={<UserBottomTab 
@@ -144,9 +143,6 @@ function App() {
           />} />
         </Routes>
         </>
-      ) : (
-        <BottomTab />
-      )
     </div>
   )
 }
