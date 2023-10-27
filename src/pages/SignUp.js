@@ -11,7 +11,7 @@ function SignUp() {
 
     const fetchUsers = () => {
       axios
-        .get('http://localhost:4000/user/register') // URL for backend
+        .get('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register') // URL for backend
         .then((res) => {
           // You can handle the response data here if needed
         })
@@ -23,7 +23,7 @@ function SignUp() {
     const handleRegister = (event) => {
         event.preventDefault()
         axios
-        .post('http://localhost:4000/user/register', { username, password })
+        .post('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register', { username, password })
         .then(() => {
             alert('Registration Successful')
             setUsername('')

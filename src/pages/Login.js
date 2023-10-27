@@ -12,7 +12,7 @@ function Login() {
   
   const fetchUsers = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/user/register`);
+      const response = await fetch(`https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register`);
       const data = await response.json();
       setUser(data);
       console.log("this from the fetchusers ", data)
@@ -24,7 +24,7 @@ function Login() {
   const handleLogin = async (event) => {
     event.preventDefault()
     try {
-      const response = await axios.post('http://localhost:4000/user/login', { username, password })
+      const response = await axios.post('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/login', { username, password })
       const token = response.data.token
       const userId = response.data.userId
       console.log("response data: ", response.data)

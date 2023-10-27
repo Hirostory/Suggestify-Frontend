@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import { useParams, Link } from "react-router-dom"
 import CollectionCreation from "../pages/CollectionCreation"
 
-const URL = `http://localhost:4000/user`
+const URL = `https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user`
 
 const UserBottomTab = (props) => {
     const [ toggle, setToggle ] = useState(1)
