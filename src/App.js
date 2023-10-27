@@ -10,8 +10,8 @@ import RecommendationCreation from './pages/RecommendationCreation'
 import RecommendationUpdate from './pages/RecommendationUpdate'
 
 
-const URL = "http://localhost:4000/collection"
-const recURL = "http://localhost:4000/recommendation"
+const URL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/collection"
+const recURL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/recommendation"
 
 function App() {
   // Checking if the user is signed in and grab user ID from localStorage
@@ -32,7 +32,7 @@ function App() {
 
     const createCollection = async (collection, userId) => {
 
-      const url = `http://localhost:4000/collection/${userId}/add`
+      const url = `https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/collection/${userId}/add`
 
         const response = await fetch(url, {
             method: "post",
@@ -72,7 +72,7 @@ function App() {
   }
 
   const createRecommendation = async (recommendation, userId) => {
-    const url = `http://localhost:4000/recommendation/${userId}/add`
+    const url = `https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/recommendation/${userId}/add`
 
         const response = await fetch(url, {
             method: "post",

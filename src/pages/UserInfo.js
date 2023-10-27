@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import { useNavigate, useParams } from "react-router-dom"
 
-const URL = `http://localhost:4000/user`
+const URL = `https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user`
 
 const UserInfo = (props) => {
     const { userId } = useParams()
