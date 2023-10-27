@@ -115,9 +115,9 @@ function App() {
 
       <TopTab />
       <Routes>
-            {isUserSignedIn && <Route path='/user/:userId' element={<UserInfo />}/> }
+            <Route path='/user/:userId' element={<UserInfo />}/> 
       </Routes>
-      {isUserSignedIn ? (
+       (
         <>
         <Routes>
           <Route path='/user/:userId' element={<UserBottomTab 
@@ -146,7 +146,7 @@ function App() {
         </>
       ) : (
         <BottomTab />
-      )}
+      )
     </div>
   )
 }
