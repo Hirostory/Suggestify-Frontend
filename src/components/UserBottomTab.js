@@ -68,10 +68,10 @@ const UserBottomTab = (props) => {
                 >
                    <div className="container-collection-main">
                     <div className="top-collection">
-                    <h1>COLLECTION</h1>
-                    <h2>{collection.name}</h2>
+                    <h1 className="collection-log">COLLECTION</h1>
+                    <h2 className="collection-name">{collection.name}</h2>
                     {/* <img src={collection.image} alt={collection.name} /> */}
-                    <p>{collection.description}</p>
+                    <p className="info-descript">{collection.description}</p>
                     </div>
                     <div className="bottom-button-collection">
                             <button className="collection-delete-edit" onClick={() => handleDelete(collection._id)} id="delete">Delete Collection</button>
@@ -103,7 +103,7 @@ const UserBottomTab = (props) => {
                 })}
             </div>
                     <Link to={`/recommendation/${collection._id}`}>
-                    <button>Add Recommendation</button>
+                    <button className="add-rec" >Add Recommendation</button>
                     </Link>
                 </div> 
               </>

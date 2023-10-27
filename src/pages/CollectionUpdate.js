@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "../forums-css.css"
 
 const CollectionUpdate = (props) => {
     const params = useParams()
@@ -30,11 +31,11 @@ const CollectionUpdate = (props) => {
     }
 
     return (
-        <div>
+        <div className="forum-container">
             <div>
                 <h1>Current Collection</h1>
                 <h1>{collection.name}</h1>
-                <img src={collection.image} alt={collection.name}/>
+                {/* <img src={collection.image} alt={collection.name}/> */}
             </div>
             <section>
             <h2>Create Collection</h2>
@@ -61,6 +62,7 @@ const CollectionUpdate = (props) => {
                 onChange={handleChange} 
                 />
                 <select
+                    className="enum-scroll"
                     name="enum"
                     value={updateForm.enum}
                     onChange={handleChange}
