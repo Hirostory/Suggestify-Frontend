@@ -51,10 +51,12 @@ const UserBottomTab = (props) => {
                 className={toggle === index + 1 ? "tabs active-tabs" : "tabs"}
                 onClick={() => toggleTab(index + 1)}
               >
-                {collection.enum}
+                <h5 className="categoryname">{collection.enum}</h5>
               </div>
             ))}
-            <div className={toggle === "add" ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab("add")}>add</div>
+            <div className={toggle === "add" ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab("add")}>
+                <h5 className="categoryname" >Add</h5>
+            </div>
           </div>
     
           <div className="bottom-content-tabs">
@@ -64,31 +66,42 @@ const UserBottomTab = (props) => {
                     key={collection._id}
                     className={toggle === index + 1 ? "content active-content" : "content"}
                 >
-                    <h2>Collection: {collection.name}</h2>
-                    <img src={collection.image} alt={collection.name} />
+                   <div className="container-collection-main">
+                    <div className="top-collection">
+                    <h1>COLLECTION</h1>
+                    <h2>{collection.name}</h2>
+                    {/* <img src={collection.image} alt={collection.name} /> */}
                     <p>{collection.description}</p>
-                    <div>
-                            <button onClick={() => handleDelete(collection._id)} id="delete">Delete Collection</button>
+                    </div>
+                    <div className="bottom-button-collection">
+                            <button className="collection-delete-edit" onClick={() => handleDelete(collection._id)} id="delete">Delete Collection</button>
                             <Link to={`/collection/${collection._id}`}>
-                            <button>Edit Collection</button>
+                            <button className="collection-delete-edit"  >Edit Collection</button>
                             </Link>
                     </div>
-            {user.recommendation && user.recommendation.map((recommendation) => {
-                if (collection._id === recommendation.collectionName) {
-                    // console.log("this is collection's reccomendation id", collection.recommendation)
-                    // console.log("this is recommendation id", recommendation._id)
-                    return (
-                        <div key={recommendation._id}>
-                          <h3>{recommendation.title}</h3>
-                          <img src={recommendation.image} alt={recommendation.title} />
-                          <p>{recommendation.reviewDescription}</p>
-                          <Link to={`/recommendation/update/${recommendation._id}`}>
-                          <button>Update Recommendation</button>
-                          </Link>
-                        </div>
-                    )  
-                    }            
-            })}
+                   </div>
+            <div className="recommendation-box" >
+                {user.recommendation && user.recommendation.map((recommendation) => {
+                    if (collection._id === recommendation.collectionName) {
+                        // console.log("this is collection's reccomendation id", collection.recommendation)
+                        // console.log("this is recommendation id", recommendation._id)
+                        return (
+                            <div className="recommendation-conatiner" key={recommendation._id}>
+                                <img className="recom-image" src={recommendation.image} alt={recommendation.title} />
+                                <div className="recommendation-info">
+                                    <Link to={recommendation.link}>
+                                    <h3 className="image-text">{recommendation.title}</h3>
+                                    </Link>
+                                    <p className="image-text">{recommendation.reviewDescription}</p>
+                                    <Link to={`/recommendation/update/${recommendation._id}`}>
+                                    <button className="rec-button">Update</button>
+                                </Link>
+                            </div>
+                            </div>
+                        )  
+                        }            
+                })}
+            </div>
                     <Link to={`/recommendation/${collection._id}`}>
                     <button>Add Recommendation</button>
                     </Link>
