@@ -9,21 +9,21 @@ const UserInfo = (props) => {
 
     const fetchUser = async () => {
         try {
-            const response = await fetch(`${URL}/${userId}`);
-            const data = await response.json();
-            setUser(data);
+            const response = await fetch(`${URL}/${userId}`)
+            const data = await response.json()
+            setUser(data)
             console.log("this is userinfo",data)
         } catch (error) {
-            console.error('Error fetching user:', error);
+            console.error('Error fetching user:', error)
         }
-    };
+    }
     
     useEffect(() => {
-        fetchUser();
-    }, []);
+        fetchUser()
+    }, [])
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>
     }
 
     return (
@@ -31,8 +31,8 @@ const UserInfo = (props) => {
             <h1>{user.username}</h1>
             <img src={user.profilePicture} alt={user.username} />
         </div>
-    );
-};
+    )
+}
 
 
 export default UserInfo

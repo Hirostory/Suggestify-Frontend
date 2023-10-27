@@ -11,29 +11,32 @@ function SignUp() {
         fetchUsers()
     }, [])
 
-    const fetchUsers = () => {
-        axios
-        .get('http://localhost:4000/user/register') // URL for backend
-        .then((res) => {
-            // console.log(res.data)
-        })
-    }
+    const fetchUsers = async () => {
+      try {
+          const response = await axios.get('http://localhost:4000/user/register')
+          // console.log(response.data)
+      } catch (error) {
+          console.error('Error fetching users:', error.response?.data || error.message)
+      }
+  }
 
-    const handleRegister = (event) => {
-        event.preventDefault()
-        axios
-        .post('http://localhost:4000/user/register', { username, password })
-        .then(() => {
-            alert('Registration Successful')
-            setUsername('')
-            setPassword('')
-            fetchUsers()
-            navigate('/login')
-        })
-        .catch((error)=> {
-            console.log('Unable to register user')
-        })
+    const handleRegister = async (event) => {
+      event.preventDefault()
+      try {
+        const response = await axios.post('http://localhost:4000/user/register', { username, password })
+        const userId = response.data.userId
+        localStorage.setItem('userId', userId)
+        alert('Registration Successful')
+        setUsername('')
+        setPassword('')
+        fetchUsers()
+        navigate('/')
+    } catch (error) {
+        console.error('Unable to register user:', error.response?.data || error.message)
     }
+}
+       
+
 
   return (
     <div className="signup-container">

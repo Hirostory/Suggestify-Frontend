@@ -1,50 +1,54 @@
-import {useState, useEffect} from 'react'
-import { useNavigate, useParams } from "react-router-dom"
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
-const URL = `http://localhost:4000/user`
+const URL = 'http://localhost:4000/user'
 
 const UserShow = (props) => {
-    const { userId } = useParams()
-    const [user, setUser] = useState(null)
-    
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const response = await fetch(`${URL}/${userId}`);
-                const data = await response.json();
-                setUser(data);
-                console.log("USERSHOW DATA: ",data)
-            } catch (error) {
-                console.error('Error fetching user:', error);
-            }
-        };
+  const { userId } = useParams()
+  const [user, setUser] = useState(null)
 
-        fetchUser();
-    }, [userId]);
-
-    if (!user) {
-        return <div>Loading...</div>;
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(`${URL}/${userId}`)
+        const data = await response.json()
+        setUser(data)
+      } catch (error) {
+        console.error('Error fetching user:', error)
+      }
     }
 
-    return (
-        <div>
+    fetchUser()
+  }, [userId])
 
-            <div>
-                <h2>Collections:</h2>
-                <ul>
-                {user.collectionsName && user.collectionsName.map((collection) => (
-                        <li key={collection._id}>
-                            <h2>{collection.name}</h2>
-                            <img src={collection.image}/>
-                            <p>{collection.description}</p>
-                        </li>
+  const navigate = useNavigate()
 
-                    ))}
-                </ul>
-            </div>
-        </div>
-    );
-};
+  const handleSettings = () => {
+    navigate(`/user/${userId}/settings`)
+  }
 
+  if (!user) {
+    return <div>Loading...</div>
+  }
+
+  return (
+    <div>
+      <div>
+        <h2>Collections:</h2>
+        <ul>
+          {user.collectionsName &&
+            user.collectionsName.map((collection) => (
+              <li key={collection._id}>
+                <h2>{collection.name}</h2>
+                <img src={collection.image} alt={collection.name} />
+                <p>{collection.description}</p>
+              </li>
+            ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
 
 export default UserShow
+

@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react"
 import "../bottomtab.css"
-import Collection from "./Collection"
-import Recommendation from "./Recommendation"
-import User from "./User"
 import { Routes, Route } from "react-router-dom"
 import { useParams } from "react-router-dom"
-import UserShow from "../pages/UserShow"
-import UserInfo from "../pages/UserInfo"
 import CollectionCreation from "../pages/CollectionCreation"
 
 const URL = `http://localhost:4000/user`
@@ -22,20 +17,20 @@ const UserBottomTab = (props) => {
         console.log("Neha is here ",props)
         const fetchUser = async () => {
             try {
-                const response = await fetch(`${URL}/${userId}`);
-                const data = await response.json();
-                setUser(data);
+                const response = await fetch(`${URL}/${userId}`)
+                const data = await response.json()
+                setUser(data)
                 console.log("this is userbottomtab: ",data)
             } catch (error) {
-                console.error('Error fetching user:', error);
+                console.error('Error fetching user:', error)
             }
-        };
+        }
 
-        fetchUser();
-    }, [userId]);
+        fetchUser()
+    }, [userId])
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>
     }
     
    

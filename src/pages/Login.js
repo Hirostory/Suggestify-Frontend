@@ -12,12 +12,12 @@ function Login() {
   
   const fetchUsers = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/user/register`);
-      const data = await response.json();
-      setUser(data);
+      const response = await fetch(`http://localhost:4000/user/register`)
+      const data = await response.json()
+      setUser(data)
       console.log("this from the fetchusers ", data)
   } catch (error) {
-      console.error('Error fetching user:', error);
+      console.error('Error fetching user:', error)
   }
   }
 
@@ -27,8 +27,12 @@ function Login() {
       const response = await axios.post('http://localhost:4000/user/login', { username, password })
       const token = response.data.token
       const userId = response.data.userId
+      localStorage.setItem('userId', userId)
+      localStorage.setItem('token', response.data.token)
       console.log("response data: ", response.data)
       console.log("this is where we getting", userId)
+
+
       alert('Login successful')
       setUsername('')
       setPassword('')

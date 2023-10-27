@@ -1,74 +1,103 @@
-import { Routes, Route, Navigate, Params } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
-import { useState } from 'react'
-import NavBar from './components/NavBar'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import SignUp from './pages/SignUp'
-import Account from './pages/Account'
-import BottomTab from "./components/BottomTab";
-import TopTab from "./components/TopTab";
-import User from "./components/User";
-import UserShow from './pages/UserShow'
-import UserInfo from './pages/UserInfo'
+import BottomTab from './components/BottomTab'
+import TopTab from './components/TopTab'
 import UserBottomTab from './components/UserBottomTab'
-import CollectionCreation from './pages/CollectionCreation'
+import axios from 'axios'
 
-const URL = "http://localhost:4000/collection"
+axios.defaults.baseURL = 'http://localhost:4000'
+const URL = 'http://localhost:4000/collection'
+const userURL = 'http://localhost:4000/user'
+const recURL = 'http://localhost:4000/recommendation'
 
 function App() {
-  // Checking if the user is signed in and grab user ID from localStorage
   const isUserSignedIn = !!localStorage.getItem('token')
   const userId = localStorage.getItem('userId')
 
   const [collection, setCollection] = useState(null)
 
-    const getCollection = async () => {
-        const response = await fetch(URL)
-        const data = await response.json()
-        setCollection(data)
-        console.log(data)
-    }
+  const getCollection = async () => {
+    const response = await fetch(URL)
+    const data = await response.json()
+    setCollection(data)
+    console.log(data)
+  }
 
-    const createCollection = async (collection) => {
-        const response = await fetch(URL, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            }, 
-            body: JSON.stringify(collection)
-        })
-        console.log(collection)
-        const createdCollection = await response.json()
-        setCollection((prev) => [...prev, createdCollection]) 
+  const createCollection = async (collection) => {
+    const response = await fetch(URL, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(collection),
+    })
+    const createdCollection = await response.json()
+    setCollection((prev) => [...prev, createdCollection])
+  }
+
+  const updateUser = async (updateData) => {
+    try {
+      const response = await fetch(`${userURL}/update/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateData),
+      })
+      if (response.ok) {
+        getCollection()
+        return true
+      }
+      return false
+    } catch (error) {
+      console.error('Error updating user:', error)
+      return false
     }
+  }
+
+  const deleteUser = async () => {
+    try {
+      const response = await fetch(`${userURL}/${userId}`, {
+        method: 'DELETE',
+      })
+      if (response.ok) {
+        localStorage.clear()
+        return true
+      }
+      return false
+    } catch (error) {
+      console.error('Error deleting user:', error)
+      return false
+    }
+  }
+
+  useEffect(() => {
+    getCollection()
+  }, [userId])
 
   return (
     <div className="App">
+      
+
+      <TopTab updateUser={updateUser} deleteUser={deleteUser} />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="user/signup" element={<SignUp />} />
+        {isUserSignedIn && <Route path="user/:userId" element={<UserBottomTab />} />}
       </Routes>
 
-      <TopTab />
       <Routes>
-            {isUserSignedIn && <Route path='/user/:userId' element={<UserInfo />}/> }
+        {/*<Route path="collection/:id" element={<CollectionUpdate collection={collection} updateCollection={updateCollection} />} /> */}
       </Routes>
+
       {isUserSignedIn ? (
-        <Routes>
-          <Route path='/user/:userId' element={<UserBottomTab 
-          createCollection={createCollection}
-
-          />} />
-        </Routes>
+        <BottomTab deleteUser={deleteUser} />
       ) : (
-        <BottomTab />
+        <Navigate to="/user/signup" />
       )}
     </div>
   )
 }
 
 export default App
-
 
