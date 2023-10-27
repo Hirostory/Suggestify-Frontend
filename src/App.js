@@ -72,7 +72,7 @@ function App() {
   }
 
   const createRecommendation = async (recommendation, userId) => {
-    const url = `https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/recommendation/${userId}/add`
+    const url = `https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/${userId}/add`
 
         const response = await fetch(url, {
             method: "post",
@@ -115,8 +115,9 @@ function App() {
 
       <TopTab />
       <Routes>
-            <Route path='/user/:userId' element={<UserInfo />}/> 
+            {isUserSignedIn && <Route path='/user/:userId' element={<UserInfo />}/> }
       </Routes>
+      {isUserSignedIn ? (
         <>
         <Routes>
           <Route path='/user/:userId' element={<UserBottomTab 
@@ -143,6 +144,9 @@ function App() {
           />} />
         </Routes>
         </>
+      ) : (
+        <BottomTab />
+      )}
     </div>
   )
 }
