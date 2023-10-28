@@ -7,13 +7,11 @@ function SignUp() {
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
 
-    useEffect(() => {
-        fetchUsers()
-    }, [])
+   
 
     const fetchUsers = async () => {
       try {
-          const response = await axios.get('http://localhost:4000/user/register')
+          const response = await axios.get('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register')
           // console.log(response.data)
       } catch (error) {
           console.error('Error fetching users:', error.response?.data || error.message)
@@ -23,7 +21,7 @@ function SignUp() {
     const handleRegister = async (event) => {
       event.preventDefault()
       try {
-        const response = await axios.post('http://localhost:4000/user/register', { username, password })
+        const response = await axios.post('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register', { username, password })
         const userId = response.data.userId
         localStorage.setItem('userId', userId)
         alert('Registration Successful')
@@ -38,6 +36,9 @@ function SignUp() {
        
 
 
+    useEffect(() => {
+            fetchUsers()
+        }, [])
   return (
     <div className="signup-container">
       <div className="signup-header">

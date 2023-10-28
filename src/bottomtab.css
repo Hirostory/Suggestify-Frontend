@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 10px;
-    background: #efefef;
+    background: #F2CBC2;
     font-family: 'Source Sans Pro', sans-serif;
     color: #333;
   }
@@ -11,16 +11,22 @@ body {
     padding: 2rem;
 }
 
+
 .bloc-tabs {
     display: flex;
     flex-wrap: wrap;
-    /* max-width: 500px; */
+    height: 3rem;
+    max-width: 900px;
     background: #e5e5e5;
     box-shadow: 0 48px 80px -32px rgba(0,0,0,0.3);
+
+    /* this is for thr font */
+    font-size: 2rem;
+    font-weight: bold;
   }
 
 .tabs:not(:last-child) {
-    border-right: 3px solid white
+    border-right: 2px solid white
 }
 
 .active-tabs {
@@ -39,21 +45,26 @@ body {
     background: blue;
 }
 
+.categoryname {
+    margin-top: -.7rem;
+    padding: 1rem;
+}
+
 button {
     border: none;
 }
 
 .bottom-content-tabs {
     flex-grow : 1;
-    height: 700px;
-    width: 400px;
+    height: auto;
+    width: 1200px;
 }
 
 .content {
     background: white;
     padding: 20px;
     width: 100%;
-    height: 500px;
+    height: auto;
     display: none;
 }
 
@@ -71,3 +82,128 @@ button {
 .active-content {
     display: block;
 }
+
+
+.container-collection-main {
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.top-collection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 3rem;
+}
+
+.bottom-button-collection{
+    position: absolute;
+    margin-bottom: 290px;
+    margin-left: 850px;
+
+    display: flex;
+    gap: .3rem;
+}
+
+.collection-delete-edit {
+    background-color: #9e6999;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+.recommendation-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.recommendation-conatiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 420px;
+    width: 300px;
+    cursor: pointer;
+    position: relative;
+}
+
+.recom-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.recommendation-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    opacity:0;
+    transition: opacity 0.3s ease;
+}
+
+.image-text {
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+.rec-button {
+    background-color: #b27bad;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 7px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.recommendation-conatiner:hover .recommendation-info {
+    opacity: 1;
+}
+
+.add-rec {
+    background-color: #9e6999;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.collection-log {
+    font-size: 2rem;
+}
+
+.collection-name {
+    font-size: 3rem;
+    margin-top: 0rem;
+}
+
+.info-descript {
+    font-size: 1.5rem;
+    text-align: center;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+

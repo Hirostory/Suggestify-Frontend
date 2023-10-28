@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react"
-import { Routes, Route } from "react-router-dom"
-import { Link } from "react-router-dom"
-import UserIndex from "../pages/UserIndex"
-import UserShow from "../pages/UserShow"
-import UserInfo from "../pages/UserInfo"
-import BottomTab from "./BottomTab"
-import UserBottomTab from "./UserBottomTab"
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import UserIndex from "../pages/UserIndex";
+import UserShow from "../pages/UserShow";
+import UserInfo from "../pages/UserInfo";
 
-
-const URL = "http://localhost:4000/user"
+const URL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user"
 
 
 const User = (props) => {
     const [user, setUser] = useState(null)
-    const [collection, setCollection] = useState(null)
 
     const getUser = async () => {
         const response = await fetch(URL)
@@ -31,7 +27,6 @@ const User = (props) => {
         <div>
             <Routes>
                 <Route path="/" element={< UserIndex user={user} />} />
-        
             </Routes>
 
         </div>

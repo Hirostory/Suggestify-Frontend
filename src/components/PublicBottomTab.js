@@ -1,36 +1,27 @@
 import { useState, useEffect } from "react"
 import "../bottomtab.css"
-import { Routes, Route } from "react-router-dom"
-import { useParams, Link } from "react-router-dom"
-import CollectionCreation from "../pages/CollectionCreation"
+import { useParams, useNavigate, Link } from "react-router-dom"
 
 const URL = `https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user`
 
-const UserBottomTab = (props) => {
+const PublicBottomTab = (props) => {
     const [ toggle, setToggle ] = useState(1)
-    const { userId, params } = useParams()
+    const { userId } = useParams()
     const [user, setUser] = useState(null)
 
      const fetchUser = async () => {
             try {
-                const response = await fetch(`${URL}/${userId}`)
-                const data = await response.json()
-                setUser(data)
-                console.log("this is userbottomtab: ",data)
+                const response = await fetch(`${URL}/${userId}`);
+                const data = await response.json();
+                setUser(data);
+                console.log("this is PublicBottomTab: ",data)
             } catch (error) {
-                console.error('Error fetching user:', error)
+                console.error('Error fetching user:', error);
             }
-        }
+        };
 
-   
     const toggleTab = (index) => {
         setToggle(index)
-    }
-
-    
-    const handleDelete = (collectionId) => {
-        props.deleteCollection(collectionId)
-        window.location.reload()
     }
 
     useEffect(() => {
@@ -38,10 +29,25 @@ const UserBottomTab = (props) => {
     }, [userId]);
 
     if (!user) {
-        return <div>Loading...</div>
+        return <div>Loading...</div>;
     }
     return (
-        <div className="container">
+        <div>
+            <div className='profile-box'>
+            <div className='profile-container'>
+                <img className='profile-picture' src={user.profilePicture} alt={user.username} />
+                <dic>
+                    <h1 className='profile-name'>{user.username}</h1>
+                    <div className='profile-name-loc-bio-social'>
+                        <h4>Name: Person </h4>
+                        <h4>Location Base: Location</h4>
+                        <h4>Quick About Me:</h4>
+                        <h4 className='p-s' >All social media logos</h4>
+                    </div>
+                </dic>
+            </div>
+        </div>
+            <div className="container">
           <div className="bloc-tabs">
             {user.collectionsName && user.collectionsName.map((collection, index) => (
               <div
@@ -52,9 +58,6 @@ const UserBottomTab = (props) => {
                 <h5 className="categoryname">{collection.enum}</h5>
               </div>
             ))}
-            <div className={toggle === "add" ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab("add")}>
-                <h5 className="categoryname" >Add</h5>
-            </div>
           </div>
     
           <div className="bottom-content-tabs">
@@ -64,21 +67,15 @@ const UserBottomTab = (props) => {
                     key={collection._id}
                     className={toggle === index + 1 ? "content active-content" : "content"}
                 >
-                   <div className="container-collection-main">
+                    <div className="container-collection-main">
                     <div className="top-collection">
                     <h1 className="collection-log">COLLECTION</h1>
                     <h2 className="collection-name">{collection.name}</h2>
                     {/* <img src={collection.image} alt={collection.name} /> */}
                     <p className="info-descript">{collection.description}</p>
                     </div>
-                    <div className="bottom-button-collection">
-                            <button className="collection-delete-edit" onClick={() => handleDelete(collection._id)} id="delete">Delete Collection</button>
-                            <Link to={`/collection/${collection._id}`}>
-                            <button className="collection-delete-edit"  >Edit Collection</button>
-                            </Link>
-                    </div>
                    </div>
-            <div className="recommendation-box" >
+                   <div className="recommendation-box" >
                 {user.recommendation && user.recommendation.map((recommendation) => {
                     if (collection._id === recommendation.collectionName) {
                         // console.log("this is collection's reccomendation id", collection.recommendation)
@@ -91,31 +88,22 @@ const UserBottomTab = (props) => {
                                     <h3 className="image-text">{recommendation.title}</h3>
                                     </Link>
                                     <p className="image-text">{recommendation.reviewDescription}</p>
-                                    <Link to={`/recommendation/update/${recommendation._id}`}>
-                                    <button className="rec-button">Update</button>
-                                </Link>
                             </div>
                             </div>
                         )  
                         }            
                 })}
             </div>
-                    <Link to={`/recommendation/${collection._id}`}>
-                    <button className="add-rec" >Add Recommendation</button>
-                    </Link>
                 </div> 
               </>
             ))}
             
-                <div className={toggle === "add" ? "content active-content" : "content"}>
-                    <CollectionCreation 
-                        createCollection={props.createCollection}
-                        userId={userId}
-                    />
-                </div>
           </div>
         </div>
+        </div>
+
+        
       )
 }
 
-export default UserBottomTab
+export default PublicBottomTab
