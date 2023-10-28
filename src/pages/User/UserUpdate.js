@@ -20,13 +20,30 @@ const UserUpdate = (props) => {
     })
   }
 
-  const handleUpdateUser = async () => {
+  const handleUpdateUsername = async () => {
+    const success = await props.updateUser({ username: updateForm.username })
+    if (success) {
+      console.log("Username updated successfully")
+    } else {
+      console.error("Error updating username")
+    }
+  }
+
+  const handleUpdatePassword = async () => {
+    const success = await props.updateUser({ password: updateForm.password })
+    if (success) {
+      console.log("Password updated successfully")
+    } else {
+      console.error("Error updating password")
+    }
+  }
+
+  const handleUpdateProfilePicture = async () => {
     const success = await props.updateUser({ profilePicture: updateForm.profilePicture })
     if (success) {
-      console.log("User updated successfully")
-      navigate(`/user/${props.userId}`) 
+      console.log("Profile picture updated successfully")
     } else {
-      console.error("Error updating user")
+      console.error("Error updating profile picture")
     }
   }
 
@@ -54,7 +71,7 @@ const UserUpdate = (props) => {
           placeholder="Username"
           onChange={handleChange}
         />
-        <button onClick={handleUpdateUser}>Update Username</button>
+        <button onClick={handleUpdateUsername}>Update Username</button>
 
         <input
           type="password"
@@ -63,7 +80,7 @@ const UserUpdate = (props) => {
           placeholder="Password"
           onChange={handleChange}
         />
-        <button onClick={handleUpdateUser}>Update Password</button>
+        <button onClick={handleUpdatePassword}>Update Password</button>
 
         <input
           type="text"
@@ -72,7 +89,7 @@ const UserUpdate = (props) => {
           placeholder="Profile Picture URL"
           onChange={handleChange}
         />
-        <button onClick={handleUpdateUser}>Change Profile Picture</button>
+        <button onClick={handleUpdateProfilePicture}>Change Profile Picture</button>
         
 
 

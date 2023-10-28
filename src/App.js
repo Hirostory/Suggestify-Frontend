@@ -26,6 +26,7 @@ function App() {
 
   const updateUser = async (updateData) => {
     try {
+      const userId = localStorage.getItem('userId')
       const response = await fetch(`${userURL}/update/${userId}`, {
         method: 'PUT',
         headers: {
@@ -42,7 +43,7 @@ function App() {
       console.error('Error updating user:', error)
       return false
     }
-  }
+}
 
     const getCollection = async () => {
         const response = await fetch(URL)
