@@ -17,7 +17,7 @@ function Login() {
       setUser(data);
       console.log("this from the fetchusers ", data)
   } catch (error) {
-      console.error('Error fetching user:', error);
+      console.error('Error fetching user:', error)
   }
   }
 
@@ -27,8 +27,12 @@ function Login() {
       const response = await axios.post('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/login', { username, password })
       const token = response.data.token
       const userId = response.data.userId
+      localStorage.setItem('userId', userId)
+      localStorage.setItem('token', response.data.token)
       console.log("response data: ", response.data)
       console.log("this is where we getting", userId)
+
+
       alert('Login successful')
       setUsername('')
       setPassword('')

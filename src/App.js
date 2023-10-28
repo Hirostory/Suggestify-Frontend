@@ -8,19 +8,40 @@ import UserBottomTab from './components/UserBottomTab'
 import CollectionUpdate from './pages/CollectionUpdate'
 import RecommendationCreation from './pages/RecommendationCreation'
 import RecommendationUpdate from './pages/RecommendationUpdate'
+import axios from 'axios'
 
+axios.defaults.baseURL = 'https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/'
 
+const userURL = 'https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com//user'
 const URL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/collection"
 const recURL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/recommendation"
 
 function App() {
-  // Checking if the user is signed in and grab user ID from localStorage
   const isUserSignedIn = !!localStorage.getItem('token')
   const userId = useParams()
   const [collection, setCollection] = useState(null)
   const [recommendation, setRecommendation] = useState(null)
 
   console.log("the params is ",userId)
+
+  const updateUser = async (updateData) => {
+    try {
+      const response = await fetch(`${userURL}/update/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateData),
+      })
+      if (response.ok) {
+        getCollection()
+        return true
+      }
+      return false
+    } catch (error) {
+      console.error('Error updating user:', error)
+      return false
+    }
 
     const getCollection = async () => {
         const response = await fetch(URL)
@@ -45,6 +66,27 @@ function App() {
         const createdCollection = await response.json()
         setCollection((prev) => [...prev, createdCollection]) 
     }
+  }
+
+  const deleteUser = async () => {
+    try {
+      const response = await fetch(`${userURL}/${userId}`, {
+        method: 'DELETE',
+      })
+      if (response.ok) {
+        localStorage.clear()
+        return true
+      }
+      return false
+    } catch (error) {
+      console.error('Error deleting user:', error)
+      return false
+    }
+  }
+
+  useEffect(() => {
+    getCollection()
+  }, [userId])
 
     const updateCollection = async (collection, id) => {
       await fetch(`${URL}/${id}`, {
@@ -111,12 +153,11 @@ function App() {
 
   return (
     <div className="App">
+      
+
+      <TopTab updateUser={updateUser} deleteUser={deleteUser} />
 
 
-      <TopTab />
-      <Routes>
-            {isUserSignedIn && <Route path='/user/:userId' element={<UserInfo />}/> }
-      </Routes>
       {isUserSignedIn ? (
         <>
         <Routes>
@@ -145,12 +186,11 @@ function App() {
         </Routes>
         </>
       ) : (
-        <BottomTab />
+        <Navigate to="/user/signup" />
       )}
     </div>
   )
 }
 
 export default App
-
 

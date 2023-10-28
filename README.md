@@ -1,12 +1,22 @@
-# Getting Started with Create React App
+# Suggestify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Suggestify is a MERN stack social media application for users to share and explore their personal favorites and recommendations. Users can post their favorite movies, tv shows, products, restaurants, or anything their heart desires. 
 
-## Available Scripts
+## Deployment
 
-In the project directory, you can run:
+Application is deployed and can be viewed via:
+Netlify (Frontend):
+Heroku (Backend):
 
-### `npm start`
+### Technologies Used
+
+Express.js
+Node.js
+Mongoose
+MongoDB
+bcrypt 
+jsonwebtoken
+React.js
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.

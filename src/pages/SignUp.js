@@ -9,32 +9,32 @@ function SignUp() {
 
    
 
-    const fetchUsers = () => {
-      axios
-        .get('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register') // URL for backend
-        .then((res) => {
-          // You can handle the response data here if needed
-        })
-        .catch((error) => {
-          console.error('Error fetching users:', error)
-        })
-    }
+    const fetchUsers = async () => {
+      try {
+          const response = await axios.get('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register')
+          // console.log(response.data)
+      } catch (error) {
+          console.error('Error fetching users:', error.response?.data || error.message)
+      }
+  }
 
-    const handleRegister = (event) => {
-        event.preventDefault()
-        axios
-        .post('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register', { username, password })
-        .then(() => {
-            alert('Registration Successful')
-            setUsername('')
-            setPassword('')
-            fetchUsers()
-            navigate('/login')
-        })
-        .catch((error)=> {
-            console.log('Unable to register user')
-        })
+    const handleRegister = async (event) => {
+      event.preventDefault()
+      try {
+        const response = await axios.post('https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register', { username, password })
+        const userId = response.data.userId
+        localStorage.setItem('userId', userId)
+        alert('Registration Successful')
+        setUsername('')
+        setPassword('')
+        fetchUsers()
+        navigate('/')
+    } catch (error) {
+        console.error('Unable to register user:', error.response?.data || error.message)
     }
+}
+       
+
 
     useEffect(() => {
             fetchUsers()

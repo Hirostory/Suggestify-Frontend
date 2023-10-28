@@ -13,17 +13,15 @@ const UserBottomTab = (props) => {
 
      const fetchUser = async () => {
             try {
-                const response = await fetch(`${URL}/${userId}`);
-                const data = await response.json();
-                setUser(data);
+                const response = await fetch(`${URL}/${userId}`)
+                const data = await response.json()
+                setUser(data)
                 console.log("this is userbottomtab: ",data)
             } catch (error) {
-                console.error('Error fetching user:', error);
+                console.error('Error fetching user:', error)
             }
-        };
+        }
 
-    
-    
    
     const toggleTab = (index) => {
         setToggle(index)
@@ -40,7 +38,7 @@ const UserBottomTab = (props) => {
     }, [userId]);
 
     if (!user) {
-        return <div>Loading...</div>;
+        return <div>Loading...</div>
     }
     return (
         <div className="container">
