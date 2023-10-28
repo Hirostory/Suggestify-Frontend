@@ -9,7 +9,7 @@ function Login() {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
-  
+  // fetch user data
   const fetchUsers = async () => {
     try {
       const response = await fetch(`https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user/register`);
@@ -21,6 +21,7 @@ function Login() {
   }
   }
 
+  // handle login process
   const handleLogin = async (event) => {
     event.preventDefault()
     try {

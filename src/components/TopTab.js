@@ -9,8 +9,8 @@ const TopTab = (props) => {
     const [toggle, setToggle] = useState(1)
     const navigate = useNavigate()
     const [showLoginForm, setShowLoginForm] = useState(false)
-    const isUserSignedIn = !!localStorage.getItem('token')
-    const userId = localStorage.getItem('userId')
+    const isUserSignedIn = !!localStorage.getItem('token') // Check if user token exists in local storage
+    const userId = localStorage.getItem('userId') // retrive user's ID from local storage
     const [showSignUp, setShowSignUp] = useState(false)
 
     const handleHome = () => {
