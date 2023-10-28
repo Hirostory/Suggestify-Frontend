@@ -61,7 +61,7 @@ const CollectionCreation = (props) => {
                         <option value="Book">Book</option>
                         <option value="Product">Product</option>
                         <option value="Restaurant">Restaurant</option>
-                        <option value="Playlist">Playist</option>
+                        <option value="Playlist">Playlist</option>
                     </select>
                         <input type="Submit" value="Create Collection" />
                 </form>

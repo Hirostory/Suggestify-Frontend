@@ -65,7 +65,7 @@ const RecommendationCreation = (props) => {
                   onChange={handleChange} 
                   />
                   
-                      <input type="Submit" value="Create Collection" />
+                      <input type="Submit" value="Create Recommendation" />
               </form>
           </section>
         </div>
