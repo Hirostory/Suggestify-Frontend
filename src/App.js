@@ -12,13 +12,13 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/'
 
-const userURL = 'https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com//user'
+const userURL = 'https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user'
 const URL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/collection"
 const recURL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/recommendation"
 
 function App() {
   const isUserSignedIn = !!localStorage.getItem('token')
-  const userId = useParams()
+  const { userId } = useParams()
   const [collection, setCollection] = useState(null)
   const [recommendation, setRecommendation] = useState(null)
 
@@ -48,7 +48,6 @@ function App() {
         const response = await fetch(URL)
         const data = await response.json()
         setCollection(data)
-        console.log("this is get collection in app.js",data)
     }
     
 
