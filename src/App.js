@@ -160,7 +160,10 @@ function App() {
 
       <TopTab updateUser={updateUser} deleteUser={deleteUser} />
 
-
+       
+      <Routes>
+            {isUserSignedIn && <Route path='/user/:userId' element={<UserInfo />}/> }
+      </Routes> 
       {isUserSignedIn ? (
         <>
         <Routes>
@@ -189,7 +192,7 @@ function App() {
         </Routes>
         </>
       ) : (
-        <Navigate to="/user/signup" />
+        <BottomTab />
       )}
     </div>
   )
