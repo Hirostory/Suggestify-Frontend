@@ -18,11 +18,11 @@ const recURL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/recommen
 
 function App() {
   const isUserSignedIn = !!localStorage.getItem('token')
-  const userId = useParams()
+  const { userId } = useParams()
   const [collection, setCollection] = useState(null)
   const [recommendation, setRecommendation] = useState(null)
 
-  console.log("the params is ",userId)
+  // console.log("the params is ",userId)
 
   const updateUser = async (updateData) => {
     try {
@@ -49,7 +49,6 @@ function App() {
         const response = await fetch(URL)
         const data = await response.json()
         setCollection(data)
-        console.log("this is get collection in app.js",data)
     }
     
 
@@ -149,7 +148,6 @@ function App() {
     }
 
     useEffect(() => {
-      getCollection()
       getRecommendation()
     }, [])
 
@@ -161,7 +159,10 @@ function App() {
 
       <TopTab updateUser={updateUser} deleteUser={deleteUser} />
 
-
+       
+      <Routes>
+            {isUserSignedIn && <Route path='/user/:userId' element={<UserInfo />}/> }
+      </Routes> 
       {isUserSignedIn ? (
         <>
         <Routes>
@@ -190,7 +191,7 @@ function App() {
         </Routes>
         </>
       ) : (
-        <Navigate to="/" />
+        <BottomTab />
       )}
     </div>
   )

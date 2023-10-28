@@ -29,3 +29,35 @@
     align-items: center;
     gap: 2rem;
 }
+
+.Sign-Up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-container {
+    width: 700px;
+    margin: auto;
+    padding: 50px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 7rem;
+}
+
+.update-container-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 700px;
+    margin: auto;
+    padding: 50px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 5rem;
+}
