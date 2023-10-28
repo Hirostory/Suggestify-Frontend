@@ -1,80 +1,77 @@
 # Suggestify
 
-Suggestify is a MERN stack social media application for users to share and explore their personal favorites and recommendations. Users can post their favorite movies, tv shows, products, restaurants, or anything their heart desires. 
+Suggestify is a MERN stack social media application for users to share and explore their personal favorites and recommendations. Users can share favorites related to movies, tv shows, products, restaurants and books. They can view other favorites to explore new restaurants, products, and entertainment options.
 
-## Deployment
 
-Application is deployed and can be viewed via:
-Netlify (Frontend):
-Heroku (Backend):
-
-### Technologies Used
+### Technologies Used:
 
 Express.js
 Node.js
 Mongoose
 MongoDB
-bcrypt 
-jsonwebtoken
-React.js
+React
+Bcrypt 
+Jsonwebtoken
+Axios
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Stories:
+As a user, I want to create an account so that I can start recommending my favorite items.
+As a user, I want to log in and log out securely.
+As a user, I want to see a personalized feed of recommendations.
+As a user, I want to view recommendations from other users.
+As a user, I want to add new recommendations with details like title, type, and review/description.
+As a user, I want to view the details of a specific recommendation.
+As a user, I want to update or delete my recommendations.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### MVP: 
+Users can sign up/log in, with encrypted passwords and an authorization flow.
+Users can view their own recommendations.
+Users can view recommendations from other users.
+Create, read, update, and delete recommendations.
+UI styling for a user-friendly experience.
 
-### `npm run build`
+### Stretch Goals:
+Users can comment on recommendations.
+Add search and filter for recommendations.
+Pull from a third-party API to fetch media information.
+Implement notifications for new recommendations.
+Implement multi-factor authentication.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## The Vision:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Suggestify Wireframe](image.png)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Approach Taken:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Began by modeling the database for User accounts, collections posted by the user, and recommendations listed within each collection. 
+2. Started the backend to develop CRUD operations for User accounts, collections, and recommendations.
+3. Established authentication for users to have their own user accounts to post collections and recommendations.
+4. Developed frontend using React and established communication with the backend. 
+5. Work through debugging and merge conflicts
+6. CSS styling
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Future Additions to the Site:
+- Add navigation buttons such as Back buttons for navigation flow between pages.
+- Smoother navigation between buttons, tabs, and pages so that page refreshes when a user, collection or recommendation is added.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Deployment:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Application is deployed and can be viewed via:
+Netlify (Frontend): https://playful-cactus-764ac1.netlify.app/
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Heroku (Backend): https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Access code here: 
+Frontend: https://github.com/Hirostory/Suggestify-Frontend
+Backend: https://github.com/Hirostory/Suggestify-Backend
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
