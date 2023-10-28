@@ -42,6 +42,7 @@ function App() {
       console.error('Error updating user:', error)
       return false
     }
+  }
 
     const getCollection = async () => {
         const response = await fetch(URL)
@@ -66,7 +67,7 @@ function App() {
         const createdCollection = await response.json()
         setCollection((prev) => [...prev, createdCollection]) 
     }
-  }
+  
 
   const deleteUser = async () => {
     try {
@@ -153,6 +154,8 @@ function App() {
 
   return (
     <div className="App">
+
+      
       
 
       <TopTab updateUser={updateUser} deleteUser={deleteUser} />
