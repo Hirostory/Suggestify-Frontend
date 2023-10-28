@@ -18,7 +18,7 @@ const recURL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/recommen
 
 function App() {
   const isUserSignedIn = !!localStorage.getItem('token')
-  const { userId } = useParams()
+  const  userId  = useParams()
   const [collection, setCollection] = useState(null)
   const [recommendation, setRecommendation] = useState(null)
 
@@ -115,7 +115,7 @@ function App() {
   }
 
   const createRecommendation = async (recommendation, userId) => {
-    const url = `https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/${userId}/add`
+    const url = `https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/recommendation/${userId}/add`
 
         const response = await fetch(url, {
             method: "post",
@@ -149,6 +149,7 @@ function App() {
 
     useEffect(() => {
       getRecommendation()
+      getCollection()
     }, [])
 
   return (

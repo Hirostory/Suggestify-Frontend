@@ -42,6 +42,7 @@ const UserUpdate = (props) => {
     const success = await props.updateUser({ profilePicture: updateForm.profilePicture })
     if (success) {
       console.log("Profile picture updated successfully")
+      window.location.reload()
     } else {
       console.error("Error updating profile picture")
     }

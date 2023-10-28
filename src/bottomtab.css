@@ -2,7 +2,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 10px;
-    background: #F2CBC2;
+    background: #F0C9C1;
     font-family: 'Source Sans Pro', sans-serif;
     color: #333;
   }
@@ -17,7 +17,7 @@ body {
     flex-wrap: wrap;
     height: 3rem;
     max-width: 900px;
-    background: #e5e5e5;
+    background: #C9BEAE;
     box-shadow: 0 48px 80px -32px rgba(0,0,0,0.3);
 
     /* this is for thr font */
@@ -26,11 +26,11 @@ body {
   }
 
 .tabs:not(:last-child) {
-    border-right: 2px solid white
+    border-right: 2px solid #C89B98
 }
 
 .active-tabs {
-    background: white;
+    background: #C89B98;
     border-bottom: 1px solid transparent;
 }
 
@@ -61,7 +61,7 @@ button {
 }
 
 .content {
-    background: white;
+    background: #C89B98;
     padding: 20px;
     width: 100%;
     height: auto;

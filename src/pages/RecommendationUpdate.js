@@ -5,13 +5,16 @@ const RecommendationUpdate = (props) => {
     const params = useParams()
     const navigate = useNavigate()
 
-    const owner = props.collection.find((o) => {
-        return o.user
-    })
+    // const owner = props.collection.find((o) => {
+    //     return o._id
+    // })
 
     const recommendation = props.recommendation.find((c) => {
         return c._id === params.id
     })
+
+    console.log("props.collection:", props.recommendation);
+    console.log("params.id:", params.id);
 
     const [updateForm, setUpdateForm] = useState ({
         title: recommendation.title,
@@ -30,12 +33,12 @@ const RecommendationUpdate = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         props.updateRecommendation(updateForm, params.id)
-        navigate(`/user/${owner.user}`)
+        navigate(`/user`)
     }
 
     const handleDelete = () => {
         props.deleteRecommendation(params.id)
-        navigate(`/user/${owner.user}`)   
+        navigate(`/user`)   
     }
 
     return (

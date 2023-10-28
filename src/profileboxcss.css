@@ -3,6 +3,7 @@
     height: 320px;
     width: 700px;
     background-color: #9e6999;
+    border: 2px solid white;
     border-radius: 25px;
     position: relative;
     margin-left: 3rem;

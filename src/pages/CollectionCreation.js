@@ -19,8 +19,9 @@ const CollectionCreation = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("Form Submitted: ", newForm)
+        console.log("User ID: ", props.userId);
         props.createCollection(newForm, props.userId)
-        window.location.reload()
+        // window.location.reload()
     }
 
     return (

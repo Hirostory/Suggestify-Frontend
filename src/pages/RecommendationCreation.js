@@ -6,7 +6,7 @@ const RecommendationCreation = (props) => {
     const navigate = useNavigate()
 
     const owner = props.collection.find((o) => {
-        return o.user
+        return o._id === params.id
     })
     
     const [newForm, setNewForm] = useState({
