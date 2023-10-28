@@ -22,7 +22,7 @@ const TopTab = (props) => {
         if (userId) {
             localStorage.removeItem('userId')
             localStorage.removeItem('token')
-            navigate('/user')
+            navigate('/')
             window.location.reload()
         }
     }
@@ -37,7 +37,7 @@ const TopTab = (props) => {
         if (!userId) {
             setShowSignUp(true)
             setShowLoginForm(false)
-            navigate('/user/signup')
+            navigate('/')
         }
     }
 
