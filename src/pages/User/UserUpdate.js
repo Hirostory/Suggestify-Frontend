@@ -42,7 +42,7 @@ const UserUpdate = (props) => {
 
   
   return (
-    <div>
+    <div className="update-container-user">
       <h1>Update Account</h1>
 
       <section>

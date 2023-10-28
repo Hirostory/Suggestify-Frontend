@@ -22,7 +22,7 @@ function App() {
   const [collection, setCollection] = useState(null)
   const [recommendation, setRecommendation] = useState(null)
 
-  console.log("the params is ",userId)
+  // console.log("the params is ",userId)
 
   const updateUser = async (updateData) => {
     try {
@@ -148,7 +148,6 @@ function App() {
     }
 
     useEffect(() => {
-      getCollection()
       getRecommendation()
     }, [])
 

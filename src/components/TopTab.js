@@ -15,7 +15,7 @@ const TopTab = (props) => {
 
     const handleHome = () => {
         setToggle(1)
-        navigate('/')
+       { isUserSignedIn ? ( navigate(`/user/${userId}`) ) : ( navigate("/") )}
     }
 
     const handleSignOut = () => {
@@ -48,7 +48,7 @@ const TopTab = (props) => {
                     className={toggle === 1 ? 'tabs active-tabs' : 'tabs'}
                     onClick={handleHome}
                 >
-                    Home
+                    <h5 className="categoryname" >Home</h5>
                 </div>
                 {isUserSignedIn ? (
                     <>
@@ -56,13 +56,13 @@ const TopTab = (props) => {
                             className={toggle === 2 ? 'tabs active-tabs' : 'tabs'}
                             onClick={handleSignOut}
                         >
-                            Sign Out
+                            <h5 className="categoryname" >Sign Out</h5>
                         </div>
                         <div
                             className={toggle === 3 ? 'tabs active-tabs' : 'tabs'}
                             onClick={handleSettings}
                         >
-                            Settings
+                            <h5 className="categoryname" >Settings</h5>
                         </div>
                     </>
                 ) : (
@@ -104,7 +104,7 @@ const TopTab = (props) => {
                         {showLoginForm && (
                             <>
                                 <Login />
-                                <div className="Sign Up">
+                                <div className="Sign-Up">
                                     <p>Don't have an account?</p>
                                     <button onClick={() => {
                                         setShowSignUp(true)
