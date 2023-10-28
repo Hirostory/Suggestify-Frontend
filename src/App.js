@@ -12,7 +12,7 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/'
 
-const userURL = 'https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com//user'
+const userURL = 'https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/user'
 const URL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/collection"
 const recURL = "https://nameless-beach-23923-c2e8de3dcdd3.herokuapp.com/recommendation"
 
@@ -26,6 +26,7 @@ function App() {
 
   const updateUser = async (updateData) => {
     try {
+      const userId = localStorage.getItem('userId')
       const response = await fetch(`${userURL}/update/${userId}`, {
         method: 'PUT',
         headers: {
@@ -42,7 +43,7 @@ function App() {
       console.error('Error updating user:', error)
       return false
     }
-  }
+}
 
     const getCollection = async () => {
         const response = await fetch(URL)
@@ -189,7 +190,7 @@ function App() {
         </Routes>
         </>
       ) : (
-        <Navigate to="/user/signup" />
+        <Navigate to="/" />
       )}
     </div>
   )
